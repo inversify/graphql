@@ -6,6 +6,9 @@
   "name": "root",
   "description": "Inversify GraphQL monorepo root package",
   "devDependencies": {
+    "@commitlint/cli": "20.2.0",
+    "@commitlint/config-conventional": "20.2.0",
+    "@commitlint/prompt-cli": "20.2.0",
     "husky": "9.1.7",
     "turbo": "2.6.3"
   },
@@ -19,6 +22,7 @@
   },
   "scripts": {
     "build": "turbo run build",
+    "commit": "commit",
     "format": "turbo run format",
     "lint": "turbo run lint",
     "prepare": "husky && turbo telemetry disable",
