@@ -6,6 +6,7 @@
   "name": "root",
   "description": "Inversify GraphQL monorepo root package",
   "devDependencies": {
+    "@changesets/cli": "2.29.8",
     "@commitlint/cli": "20.2.0",
     "@commitlint/config-conventional": "20.2.0",
     "@commitlint/prompt-cli": "20.2.0",

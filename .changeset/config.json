@@ -1,0 +1,11 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@3.1.1/schema.json",
+  "access": "restricted",
+  "baseBranch": "master",
+  "bumpVersionsWithWorkspaceProtocolOnly": true,
+  "changelog": "@inversifyjs/foundation-changelog-generator",
+  "commit": false,
+  "fixed": [],
+  "ignore": [],
+  "updateInternalDependencies": "patch"
+}
