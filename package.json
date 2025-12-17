@@ -1,0 +1,17 @@
+{
+  "author": "Roberto Pintos López",
+  "bugs": {
+    "url": "https://github.com/inversify/graphql/issues"
+  },
+  "name": "root",
+  "description": "Inversify GraphQL monorepo root package",
+  "devDependencies": {},
+  "homepage": "https://inversify.io/graphql/",
+  "license": "MIT",
+  "packageManager": "pnpm@10.26.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inversify/graphql.git"
+  }
+}
