@@ -5,7 +5,10 @@
   },
   "name": "root",
   "description": "Inversify GraphQL monorepo root package",
-  "devDependencies": {},
+  "devDependencies": {
+    "husky": "9.1.7",
+    "turbo": "2.6.3"
+  },
   "homepage": "https://inversify.io/graphql/",
   "license": "MIT",
   "packageManager": "pnpm@10.26.0",
@@ -13,5 +16,16 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/inversify/graphql.git"
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "format": "turbo run format",
+    "lint": "turbo run lint",
+    "prepare": "husky && turbo telemetry disable",
+    "test:integration": "turbo test:integration",
+    "test": "turbo run test",
+    "test:coverage": "turbo run test:coverage",
+    "test:uncommitted": "turbo run test:uncommitted --filter [HEAD]",
+    "test:unit": "turbo run test:unit"
   }
 }
