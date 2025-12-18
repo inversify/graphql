@@ -1,0 +1,73 @@
+name: build
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+on:
+  pull_request:
+    types:
+      - closed
+      - opened
+      - reopened
+      - synchronize
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    outputs:
+      buildAffectedPackages: ${{ steps.get-build-affected-packages.outputs.packages }}
+      testAffectedPackages: ${{ steps.get-test-affected-packages.outputs.packages }}
+    if: "!(github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == false)"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          fetch-depth: 0
+
+      - uses: ./.github/actions/setup
+
+      - name: Get build affected packages
+        id: get-build-affected-packages
+        run: echo "packages=$(pnpm exec foundation-get-affected-projects build origin/${{github.base_ref}})" >> $GITHUB_OUTPUT
+
+      - name: Get test affected packages
+        id: get-test-affected-packages
+        run: echo "packages=$(pnpm exec foundation-get-affected-project-chunks test origin/${{github.base_ref}} 4)" >> $GITHUB_OUTPUT
+
+      - name: Compile source files
+        run: pnpm run build
+
+      - name: Lint affected source files
+        run: pnpm run lint --filter=[origin/${{github.base_ref}}]
+
+      - name: Check for unused code
+        run: pnpm run unused --no-config-hints
+
+  test-package:
+    name: Test package
+    needs: build
+    runs-on: ubuntu-latest
+    if: ${{ needs.build.outputs.testAffectedPackages != '[]' }}
+    strategy:
+      matrix:
+        packages: ${{fromJSON(needs.build.outputs.testAffectedPackages)}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          fetch-depth: 0
+
+      - uses: ./.github/actions/setup
+
+      - name: Launch Unit Tests
+        run: pnpm run test:unit --filter ${{ join(matrix.packages, ' --filter ') }}
+
+      - name: Launch Integration Tests
+        run: pnpm run test:integration --filter ${{ join(matrix.packages, ' --filter ') }}
+
+  done:
+    name: Done
+    needs:
+      - test-package
+    runs-on: ubuntu-latest
+    steps:
+      - run: 'echo "Done!"'
