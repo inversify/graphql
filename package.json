@@ -10,7 +10,14 @@
     "@commitlint/cli": "20.2.0",
     "@commitlint/config-conventional": "20.2.0",
     "@commitlint/prompt-cli": "20.2.0",
+    "@inversifyjs/foundation-changelog-generator": "0.1.1",
+    "@inversifyjs/foundation-eslint-config": "0.1.3",
+    "@inversifyjs/foundation-prettier-config": "0.1.1",
+    "@inversifyjs/foundation-scripts": "workspace:*",
+    "@inversifyjs/foundation-typescript-config": "0.1.1",
+    "@inversifyjs/foundation-vitest-config": "0.1.1",
     "husky": "9.1.7",
+    "knip": "5.75.1",
     "lint-staged": "16.2.7",
     "turbo": "2.6.3"
   },
@@ -28,10 +35,13 @@
     "format": "turbo run format",
     "lint": "turbo run lint",
     "prepare": "husky && turbo telemetry disable",
+    "prerelease": "pnpm run build",
+    "release": "changeset publish",
     "test:integration": "turbo test:integration",
     "test": "turbo run test",
     "test:coverage": "turbo run test:coverage",
     "test:uncommitted": "turbo run test:uncommitted --filter [HEAD]",
-    "test:unit": "turbo run test:unit"
+    "test:unit": "turbo run test:unit",
+    "unused": "knip"
   }
 }

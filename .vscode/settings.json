@@ -1,5 +1,6 @@
 {
   "eslint.workingDirectories": [
-    { "pattern": "./packages/framework/*", "!cwd": false }
+    { "pattern": "./packages/*", "!cwd": false },
+    { "pattern": "./packages/foundation/tools/*", "!cwd": false }
   ]
 }

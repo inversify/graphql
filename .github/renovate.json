@@ -1,0 +1,59 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "automerge": false,
+  "constraints": {
+    "pnpm": "10"
+  },
+  "extends": [
+    ":dependencyDashboard",
+    ":disableRateLimiting",
+    ":semanticCommitScopeDisabled",
+    ":semanticPrefixFixDepsChoreOthers",
+    "group:monorepos",
+    "group:recommended",
+    "helpers:pinGitHubActionDigests",
+    "mergeConfidence:age-confidence-badges",
+    "replacements:all",
+    "workarounds:all"
+  ],
+  "ignoreDeps": [],
+  "ignorePaths": [
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "**/vendor/**",
+    "**/__tests__/**",
+    "**/test/**",
+    "**/tests/**",
+    "**/__fixtures__/**"
+  ],
+  "packageRules": [
+    {
+      "enabled": false,
+      "matchDepTypes": ["peerDependencies"],
+      "matchPackageNames": ["express"],
+      "matchUpdateTypes": ["major"],
+      "matchCurrentVersion": ">=4.0.0 <5.0.0"
+    },
+    {
+      "automerge": true,
+      "description": "auto merge on patch or minor",
+      "groupName": "auto merge on patch or minor",
+      "matchUpdateTypes": ["patch", "minor"],
+      "excludePackageNames": ["turbo", "typescript"]
+    },
+    {
+      "description": "Group GitHub Actions updates",
+      "groupName": "GitHub Actions",
+      "matchManagers": ["github-actions"]
+    },
+    {
+      "description": "Quarantine packages with current known issues",
+      "enabled": false,
+      "matchPackageNames": []
+    }
+  ],
+  "rangeStrategy": "bump",
+  "rebaseWhen": "conflicted",
+  "semanticCommits": "enabled",
+  "schedule": ["at any time"]
+}
