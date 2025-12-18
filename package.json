@@ -15,11 +15,10 @@
     "@inversifyjs/foundation-prettier-config": "0.1.1",
     "@inversifyjs/foundation-scripts": "workspace:*",
     "@inversifyjs/foundation-typescript-config": "0.1.1",
-    "@inversifyjs/foundation-rollup-config": "0.1.1",
     "@inversifyjs/foundation-vitest-config": "0.1.1",
     "husky": "9.1.7",
+    "knip": "5.75.1",
     "lint-staged": "16.2.7",
-    "prettier": "3.7.4",
     "turbo": "2.6.3"
   },
   "homepage": "https://inversify.io/graphql/",
@@ -36,10 +35,13 @@
     "format": "turbo run format",
     "lint": "turbo run lint",
     "prepare": "husky && turbo telemetry disable",
+    "prerelease": "pnpm run build",
+    "release": "changeset publish",
     "test:integration": "turbo test:integration",
     "test": "turbo run test",
     "test:coverage": "turbo run test:coverage",
     "test:uncommitted": "turbo run test:uncommitted --filter [HEAD]",
-    "test:unit": "turbo run test:unit"
+    "test:unit": "turbo run test:unit",
+    "unused": "knip"
   }
 }

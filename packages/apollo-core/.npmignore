@@ -17,5 +17,4 @@ eslint.config.mjs
 vitest.config.mjs
 vitest.workspace.mjs
 prettier.config.mjs
-rollup.config.mjs
 tsconfig.json
