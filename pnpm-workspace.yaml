@@ -1,2 +1,7 @@
 packages:
-  - packages/framework/*
+  - packages/*
+
+onlyBuiltDependencies:
+  - '@apollo/protobufjs'
+  - '@swc/core'
+  - esbuild
