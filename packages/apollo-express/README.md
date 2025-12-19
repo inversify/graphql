@@ -1,3 +1,3 @@
-# @inversifyjs/apollo-core
+# @inversifyjs/apollo-express
 
-Inversify GrapQL Apollo core modules.
+Inversify GraphQL Apollo express modules.
