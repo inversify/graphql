@@ -12,8 +12,8 @@ export default async function readSchemas(
   );
 
   const graphqlSchemas: string[] = await Promise.all(
-    graphqlSchemasPaths.map(async (jsonSchemaPath: string) =>
-      parseGraphqlFile(jsonSchemaPath),
+    graphqlSchemasPaths.map(async (schemaPath: string) =>
+      parseGraphqlFile(schemaPath),
     ),
   );
 

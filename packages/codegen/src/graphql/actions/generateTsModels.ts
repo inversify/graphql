@@ -25,7 +25,7 @@ export default async function generateTsModels(
 
   /*
    * Consider https://the-guild.dev/graphql/codegen/plugins/typescript/typescript as reference
-   * Consider https://the-guild.dev/graphql/codegen/plugins/typescript/typescript-resolvers as refrence
+   * Consider https://the-guild.dev/graphql/codegen/plugins/typescript/typescript-resolvers as reference
    */
   const config: CodegenConfig = {
     generates: {
