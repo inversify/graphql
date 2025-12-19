@@ -1,0 +1,65 @@
+{
+  "author": "Roberto Pintos López",
+  "bugs": {
+    "url": "https://github.com/inversify/graphql/issues"
+  },
+  "description": "InversifyJs GraphQL codegen package",
+  "dependencies": {
+    "@graphql-codegen/cli": "^6.1.0",
+    "@graphql-codegen/typescript": "^5.0.7",
+    "@graphql-codegen/typescript-resolvers": "^5.1.5",
+    "glob": "^13.0.0",
+    "prettier": "^3.7.4"
+  },
+  "devDependencies": {
+    "@graphql-codegen/plugin-helpers": "6.1.0",
+    "@types/node": "24.10.4",
+    "@vitest/coverage-v8": "4.0.16",
+    "eslint": "9.39.2",
+    "rimraf": "6.1.2",
+    "tslib": "2.8.1",
+    "typescript": "5.9.3",
+    "vitest": "4.0.16"
+  },
+  "homepage": "https://inversify.io/framework/",
+  "keywords": [
+    "codegen",
+    "inversify",
+    "graphql",
+    "http",
+    "node",
+    "typescript"
+  ],
+  "devEngines": {
+    "node": "^24.10.0",
+    "pnpm": "^10.13.1"
+  },
+  "license": "MIT",
+  "module": "lib/esm/index.js",
+  "exports": {
+    ".": "./lib/esm/index.js"
+  },
+  "name": "@inversifyjs/graphql-codegen",
+  "peerDependencies": {},
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inversify/graphql.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "build:clean": "rimraf lib",
+    "format": "prettier --write ./src",
+    "lint": "eslint ./src",
+    "prebuild": "pnpm run build:clean",
+    "test": "vitest run",
+    "test:integration": "pnpm run test --project Integration",
+    "test:coverage": "pnpm run test:unit --coverage",
+    "test:uncommitted": "pnpm run test --changed=HEAD",
+    "test:unit": "pnpm run test --project Unit"
+  },
+  "type": "module",
+  "version": "0.1.0"
+}

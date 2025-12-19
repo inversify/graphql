@@ -1,0 +1,16 @@
+/.turbo
+/coverage
+/docs
+/reports
+
+lib/**/*.spec.js
+lib/**/*.spec.js.map
+
+src/
+
+.lintstagedrc.json
+eslint.config.mjs
+vitest.config.mjs
+vitest.workspace.mjs
+prettier.config.mjs
+tsconfig.json
