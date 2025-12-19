@@ -5,7 +5,5 @@ export abstract class ApolloServerController<
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unnecessary-type-parameters
   TContextArgs extends unknown[] = any[],
 > {
-  protected abstract _getContext(
-    ...args: TContextArgs
-  ): TContext | Promise<TContext>;
+  protected abstract _getContext(...args: TContextArgs): Promise<TContext>;
 }
