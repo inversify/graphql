@@ -17,8 +17,8 @@ import {
 
 import { apolloServerPluginsServiceIdentifier } from '../models/apolloServerPluginsServiceIdentifier.js';
 import { apolloServerResolversServiceIdentifier } from '../models/apolloServerResolversServiceIdentifier.js';
+import { apolloServerServiceIdentifier } from '../models/apolloServerServiceIdentifier.js';
 import { apolloServerTypeDefsServiceIdentifier } from '../models/apolloServerTypeDefsServiceIdentifier.js';
-import { buildApolloServerServiceIdentifier } from '../models/buildApolloServerServiceIdentifier.js';
 import { ApolloServerContainerModule } from './ApolloServerContainerModule.js';
 
 describe(ApolloServerContainerModule, () => {
@@ -67,14 +67,17 @@ describe(ApolloServerContainerModule, () => {
         it('should call options.bind()', () => {
           expect(
             containerModuleLoadOptionsMock.bind,
-          ).toHaveBeenCalledExactlyOnceWith(buildApolloServerServiceIdentifier);
+          ).toHaveBeenCalledExactlyOnceWith(apolloServerServiceIdentifier);
         });
 
         it('should call bind.toResolvedValue()', () => {
           expect(
             bindToFluentSyntaxMock.toResolvedValue,
           ).toHaveBeenCalledExactlyOnceWith(expect.any(Function), [
-            apolloServerPluginsServiceIdentifier,
+            {
+              optional: true,
+              serviceIdentifier: apolloServerPluginsServiceIdentifier,
+            },
             apolloServerResolversServiceIdentifier,
             apolloServerTypeDefsServiceIdentifier,
           ]);
