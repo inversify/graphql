@@ -15,7 +15,7 @@ import { InversifyExpressHttpAdapter } from '@inversifyjs/http-express';
 import express from 'express';
 import { Container, ContainerModuleLoadOptions, Newable } from 'inversify';
 
-import { buildApolloServerExpressController } from './buildApolloServerExpressController';
+import buildApolloServerExpressController from './buildApolloServerExpressController.js';
 
 describe(buildApolloServerExpressController, () => {
   describe('having an http server with an ApolloServerExpressController', () => {

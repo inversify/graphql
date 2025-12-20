@@ -9,7 +9,6 @@ import {
 } from '@inversifyjs/apollo-core';
 import {
   Controller,
-  ControllerOptions,
   Next,
   Post,
   Request,
@@ -18,17 +17,12 @@ import {
 import type express from 'express';
 import { inject, Newable } from 'inversify';
 
-export interface BuildApolloServerExpressControllerOptions<
-  TContext extends BaseContext,
-> {
-  controllerOptions?: string | ControllerOptions | undefined;
-  getContext: (arg: ExpressContextFunctionArgument) => Promise<TContext>;
-}
+import { ApolloServerExpressControllerOptions } from '../models/ApolloExpressControllerOptions.js';
 
-export function buildApolloServerExpressController<
+export default function buildApolloServerExpressController<
   TContext extends BaseContext = BaseContext,
 >(
-  options: BuildApolloServerExpressControllerOptions<TContext>,
+  options: ApolloServerExpressControllerOptions<TContext>,
 ): Newable<ApolloServerController<TContext, [ExpressContextFunctionArgument]>> {
   @Controller(options.controllerOptions)
   class ApolloServerExpressController extends ApolloServerController<
