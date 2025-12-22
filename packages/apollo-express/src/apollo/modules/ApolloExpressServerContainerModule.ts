@@ -1,4 +1,4 @@
-import type http from 'node:http';
+import http from 'node:http';
 
 import { type BaseContext } from '@apollo/server';
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
@@ -8,12 +8,14 @@ import {
   apolloServerResolversServiceIdentifier,
   apolloServerTypeDefsServiceIdentifier,
 } from '@inversifyjs/apollo-core';
-import { httpServerServiceIdentifier } from '@inversifyjs/http-core';
+import { httpApplicationServiceIdentifier } from '@inversifyjs/http-core';
+import type express from 'express';
 import { type ContainerModuleLoadOptions } from 'inversify';
 
 import buildApolloServerExpressController from '../controllers/buildApolloServerExpressController.js';
 import { ApolloServerExpressControllerOptions } from '../models/ApolloExpressControllerOptions.js';
 import { ApolloServerInjectOptions } from '../models/ApolloServerInjectOptions.js';
+import { httpServerServiceIdentifier } from '../models/httpServerServiceIdentifier.js';
 
 export default class ApolloExpressServerContainerModule extends ApolloServerContainerModule {
   public static forOptions<TContext extends BaseContext>(
@@ -25,6 +27,16 @@ export default class ApolloExpressServerContainerModule extends ApolloServerCont
         options
           .bind(buildApolloServerExpressController(controllerOptions))
           .toSelf();
+
+        options
+          .bind(httpServerServiceIdentifier)
+          .toResolvedValue(
+            (application: express.Application) =>
+              (serverOptions.http?.createServer ?? http.createServer)(
+                application,
+              ),
+            [httpApplicationServiceIdentifier],
+          );
 
         options
           .bind(apolloServerPluginsServiceIdentifier)
