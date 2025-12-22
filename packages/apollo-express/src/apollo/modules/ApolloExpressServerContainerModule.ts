@@ -50,7 +50,7 @@ export default class ApolloExpressServerContainerModule extends ApolloServerCont
 
         options
           .bind(apolloServerResolversServiceIdentifier)
-          .toConstantValue(serverOptions.resolvers);
+          .toService(serverOptions.resolverServiceIdentifier);
 
         options
           .bind(apolloServerTypeDefsServiceIdentifier)
