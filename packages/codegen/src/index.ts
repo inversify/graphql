@@ -1,6 +1,4 @@
-import generateTsModels from './graphql/actions/generateTsModels.js';
-import { type GenerateModelsOptions } from './graphql/models/GenerateModelsOptions.js';
-import { ReadSchemasOptions } from './io/models/ReadSchemasOptions.js';
-
-export type { GenerateModelsOptions, ReadSchemasOptions };
-export { generateTsModels };
+export { default as generateTsModels } from './graphql/actions/generateTsModels.js';
+export { type GenerateModelsOptions } from './graphql/models/GenerateModelsOptions.js';
+export { default as readSchemas } from './io/calculations/readSchemas.js';
+export { ReadSchemasOptions } from './io/models/ReadSchemasOptions.js';
