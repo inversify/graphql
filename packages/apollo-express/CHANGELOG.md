@@ -1,5 +1,11 @@
 # @inversifyjs/apollo-express
 
+## 0.4.0
+
+### Minor Changes
+
+- Removed `ApolloServerInjectOptions.resolvers` in favor of `resolverServiceIdentifier`
+
 ## 0.3.0
 
 ### Minor Changes
