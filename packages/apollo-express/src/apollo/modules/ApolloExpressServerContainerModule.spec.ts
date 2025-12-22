@@ -19,12 +19,13 @@ import {
   apolloServerResolversServiceIdentifier,
   apolloServerTypeDefsServiceIdentifier,
 } from '@inversifyjs/apollo-core';
-import { httpServerServiceIdentifier } from '@inversifyjs/http-core';
+import { httpApplicationServiceIdentifier } from '@inversifyjs/http-core';
 import { type ContainerModuleLoadOptions, type Newable } from 'inversify';
 
 import buildApolloServerExpressController from '../controllers/buildApolloServerExpressController.js';
 import { type ApolloServerExpressControllerOptions } from '../models/ApolloExpressControllerOptions.js';
 import { type ApolloServerInjectOptions } from '../models/ApolloServerInjectOptions.js';
+import { httpServerServiceIdentifier } from '../models/httpServerServiceIdentifier.js';
 import ApolloExpressServerContainerModule from './ApolloExpressServerContainerModule.js';
 
 describe(ApolloExpressServerContainerModule, () => {
@@ -114,21 +115,25 @@ describe(ApolloExpressServerContainerModule, () => {
       });
 
       it('should call options.bind()', () => {
-        expect(containerModuleLoadOptionsMock.bind).toHaveBeenCalledTimes(5);
+        expect(containerModuleLoadOptionsMock.bind).toHaveBeenCalledTimes(6);
         expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
           2,
           controllerClassMock,
         );
         expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
           3,
-          apolloServerPluginsServiceIdentifier,
+          httpServerServiceIdentifier,
         );
         expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
           4,
-          apolloServerResolversServiceIdentifier,
+          apolloServerPluginsServiceIdentifier,
         );
         expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
           5,
+          apolloServerResolversServiceIdentifier,
+        );
+        expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
+          6,
           apolloServerTypeDefsServiceIdentifier,
         );
       });
@@ -138,9 +143,14 @@ describe(ApolloExpressServerContainerModule, () => {
       });
 
       it('should call bind.toResolvedValue()', () => {
-        expect(bindToFluentSyntaxMock.toResolvedValue).toHaveBeenCalledTimes(2);
+        expect(bindToFluentSyntaxMock.toResolvedValue).toHaveBeenCalledTimes(3);
         expect(bindToFluentSyntaxMock.toResolvedValue).toHaveBeenNthCalledWith(
           2,
+          expect.any(Function),
+          [httpApplicationServiceIdentifier],
+        );
+        expect(bindToFluentSyntaxMock.toResolvedValue).toHaveBeenNthCalledWith(
+          3,
           expect.any(Function),
           [httpServerServiceIdentifier],
         );
