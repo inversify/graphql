@@ -46,7 +46,7 @@ describe(ApolloExpressServerContainerModule, () => {
 
       serverOptionsFixture = {
         plugins: [],
-        resolvers: {},
+        resolverServiceIdentifier: Symbol(),
         typeDefs: 'type Query { hello: String }',
       };
 
@@ -76,9 +76,10 @@ describe(ApolloExpressServerContainerModule, () => {
 
     describe('when called load()', () => {
       let bindToFluentSyntaxMock: {
+        toConstantValue: Mock;
         toSelf: Mock;
         toResolvedValue: Mock;
-        toConstantValue: Mock;
+        toService: Mock;
       };
       let containerModuleLoadOptionsMock: {
         bind: Mock;
@@ -93,6 +94,7 @@ describe(ApolloExpressServerContainerModule, () => {
           toConstantValue: vitest.fn(),
           toResolvedValue: vitest.fn(),
           toSelf: vitest.fn(),
+          toService: vitest.fn(),
         };
 
         containerModuleLoadOptionsMock = {
@@ -157,15 +159,16 @@ describe(ApolloExpressServerContainerModule, () => {
       });
 
       it('should call bind.toConstantValue()', () => {
-        expect(bindToFluentSyntaxMock.toConstantValue).toHaveBeenCalledTimes(2);
-        expect(bindToFluentSyntaxMock.toConstantValue).toHaveBeenNthCalledWith(
-          1,
-          serverOptionsFixture.resolvers,
-        );
+        expect(
+          bindToFluentSyntaxMock.toConstantValue,
+        ).toHaveBeenCalledExactlyOnceWith(serverOptionsFixture.typeDefs);
+      });
 
-        expect(bindToFluentSyntaxMock.toConstantValue).toHaveBeenNthCalledWith(
-          2,
-          serverOptionsFixture.typeDefs,
+      it('should call bind.toService()', () => {
+        expect(
+          bindToFluentSyntaxMock.toService,
+        ).toHaveBeenCalledExactlyOnceWith(
+          serverOptionsFixture.resolverServiceIdentifier,
         );
       });
 
