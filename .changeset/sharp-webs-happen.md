@@ -1,5 +1,5 @@
 ---
-"@inversifyjs/graphql-codegen": patch
+"@inversifyjs/graphql-codegen": minor
 ---
 
 - Added `readSchemas`
