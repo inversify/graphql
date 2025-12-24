@@ -19,7 +19,7 @@
     "husky": "9.1.7",
     "knip": "5.75.2",
     "lint-staged": "16.2.7",
-    "turbo": "2.7.0"
+    "turbo": "2.7.2"
   },
   "homepage": "https://inversify.io/graphql/",
   "license": "MIT",
