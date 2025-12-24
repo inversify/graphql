@@ -1,5 +1,11 @@
 # @inversifyjs/apollo-subscription-ws
 
+## 0.2.1
+
+### Patch Changes
+
+- Updated ESM module imports
+
 ## 0.2.0
 
 ### Minor Changes
