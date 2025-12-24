@@ -27,9 +27,9 @@ import { useServer } from 'graphql-ws/use/ws';
 import { type ContainerModuleLoadOptions } from 'inversify';
 import { WebSocketServer } from 'ws';
 
-import { type ApolloSubscriptionServerContainerModuleOptions } from '../models/ApolloSubscriptionServerContainerModuleOptions';
-import { wsServerServiceIdentifier } from '../models/wsServerServiceIdentifier';
-import { ApolloSubscriptionServerContainerModule } from './ApolloSubscriptionServerContainerModule';
+import { type ApolloSubscriptionServerContainerModuleOptions } from '../models/ApolloSubscriptionServerContainerModuleOptions.js';
+import { wsServerServiceIdentifier } from '../models/wsServerServiceIdentifier.js';
+import { ApolloSubscriptionServerContainerModule } from './ApolloSubscriptionServerContainerModule.js';
 
 describe(ApolloSubscriptionServerContainerModule, () => {
   describe('constructor', () => {
