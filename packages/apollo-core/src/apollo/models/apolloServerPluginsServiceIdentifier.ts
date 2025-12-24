@@ -3,5 +3,5 @@ import { type ServiceIdentifier } from 'inversify';
 
 export const apolloServerPluginsServiceIdentifier: ServiceIdentifier<
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  ApolloServerPlugin<any>[] | undefined
+  ApolloServerPlugin<any>[]
 > = Symbol.for('@inversifyjs/apollo-core/ApolloServerPlugins');
