@@ -117,25 +117,25 @@ describe(ApolloExpressServerContainerModule, () => {
       });
 
       it('should call options.bind()', () => {
-        expect(containerModuleLoadOptionsMock.bind).toHaveBeenCalledTimes(6);
+        expect(containerModuleLoadOptionsMock.bind).toHaveBeenCalledTimes(7);
         expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
-          2,
+          3,
           controllerClassMock,
         );
         expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
-          3,
+          4,
           httpServerServiceIdentifier,
         );
         expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
-          4,
+          5,
           apolloServerPluginsServiceIdentifier,
         );
         expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
-          5,
+          6,
           apolloServerResolversServiceIdentifier,
         );
         expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
-          6,
+          7,
           apolloServerTypeDefsServiceIdentifier,
         );
       });
@@ -145,14 +145,14 @@ describe(ApolloExpressServerContainerModule, () => {
       });
 
       it('should call bind.toResolvedValue()', () => {
-        expect(bindToFluentSyntaxMock.toResolvedValue).toHaveBeenCalledTimes(3);
+        expect(bindToFluentSyntaxMock.toResolvedValue).toHaveBeenCalledTimes(4);
         expect(bindToFluentSyntaxMock.toResolvedValue).toHaveBeenNthCalledWith(
-          2,
+          3,
           expect.any(Function),
           [httpApplicationServiceIdentifier],
         );
         expect(bindToFluentSyntaxMock.toResolvedValue).toHaveBeenNthCalledWith(
-          3,
+          4,
           expect.any(Function),
           [httpServerServiceIdentifier],
         );

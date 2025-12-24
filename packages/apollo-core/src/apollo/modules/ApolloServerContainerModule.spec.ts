@@ -15,6 +15,7 @@ import {
   ContainerModuleLoadOptions,
 } from 'inversify';
 
+import { apolloServerGraphqlServiceIdentifier } from '../models/apolloServerGraphqlServiceIdentifier.js';
 import { apolloServerPluginsServiceIdentifier } from '../models/apolloServerPluginsServiceIdentifier.js';
 import { apolloServerResolversServiceIdentifier } from '../models/apolloServerResolversServiceIdentifier.js';
 import { apolloServerServiceIdentifier } from '../models/apolloServerServiceIdentifier.js';
@@ -65,22 +66,36 @@ describe(ApolloServerContainerModule, () => {
         });
 
         it('should call options.bind()', () => {
-          expect(
-            containerModuleLoadOptionsMock.bind,
-          ).toHaveBeenCalledExactlyOnceWith(apolloServerServiceIdentifier);
+          expect(containerModuleLoadOptionsMock.bind).toHaveBeenCalledTimes(2);
+          expect(containerModuleLoadOptionsMock.bind).toHaveBeenCalledWith(
+            apolloServerGraphqlServiceIdentifier,
+          );
+          expect(containerModuleLoadOptionsMock.bind).toHaveBeenCalledWith(
+            apolloServerServiceIdentifier,
+          );
         });
 
         it('should call bind.toResolvedValue()', () => {
-          expect(
-            bindToFluentSyntaxMock.toResolvedValue,
-          ).toHaveBeenCalledExactlyOnceWith(expect.any(Function), [
-            {
-              optional: true,
-              serviceIdentifier: apolloServerPluginsServiceIdentifier,
-            },
-            apolloServerResolversServiceIdentifier,
-            apolloServerTypeDefsServiceIdentifier,
-          ]);
+          expect(bindToFluentSyntaxMock.toResolvedValue).toHaveBeenCalledTimes(
+            2,
+          );
+          expect(bindToFluentSyntaxMock.toResolvedValue).toHaveBeenCalledWith(
+            expect.any(Function),
+            [
+              apolloServerResolversServiceIdentifier,
+              apolloServerTypeDefsServiceIdentifier,
+            ],
+          );
+          expect(bindToFluentSyntaxMock.toResolvedValue).toHaveBeenCalledWith(
+            expect.any(Function),
+            [
+              {
+                optional: true,
+                serviceIdentifier: apolloServerPluginsServiceIdentifier,
+              },
+              apolloServerGraphqlServiceIdentifier,
+            ],
+          );
         });
 
         it('should return undefined', () => {
