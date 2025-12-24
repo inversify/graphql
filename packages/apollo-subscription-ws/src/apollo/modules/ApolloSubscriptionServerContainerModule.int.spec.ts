@@ -11,8 +11,8 @@ import { InversifyExpressHttpAdapter } from '@inversifyjs/http-express';
 import { Container, ServiceIdentifier } from 'inversify';
 import { WebSocket, WebSocketServer } from 'ws';
 
-import { wsServerServiceIdentifier } from '../models/wsServerServiceIdentifier';
-import { ApolloSubscriptionServerContainerModule } from './ApolloSubscriptionServerContainerModule';
+import { wsServerServiceIdentifier } from '../models/wsServerServiceIdentifier.js';
+import { ApolloSubscriptionServerContainerModule } from './ApolloSubscriptionServerContainerModule.js';
 
 describe(ApolloSubscriptionServerContainerModule, () => {
   describe('having an http server with an ApolloServerExpressController', () => {

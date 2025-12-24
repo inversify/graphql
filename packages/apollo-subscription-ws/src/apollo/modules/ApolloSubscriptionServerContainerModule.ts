@@ -11,8 +11,8 @@ import { useServer } from 'graphql-ws/use/ws';
 import { ContainerModule, type ContainerModuleLoadOptions } from 'inversify';
 import { WebSocketServer } from 'ws';
 
-import { type ApolloSubscriptionServerContainerModuleOptions } from '../models/ApolloSubscriptionServerContainerModuleOptions';
-import { wsServerServiceIdentifier } from '../models/wsServerServiceIdentifier';
+import { type ApolloSubscriptionServerContainerModuleOptions } from '../models/ApolloSubscriptionServerContainerModuleOptions.js';
+import { wsServerServiceIdentifier } from '../models/wsServerServiceIdentifier.js';
 
 export class ApolloSubscriptionServerContainerModule extends ContainerModule {
   constructor(options?: ApolloSubscriptionServerContainerModuleOptions) {
