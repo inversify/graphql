@@ -7,6 +7,7 @@ import {
   apolloServerPluginsServiceIdentifier,
   apolloServerResolversServiceIdentifier,
   apolloServerTypeDefsServiceIdentifier,
+  httpServerServiceIdentifier,
 } from '@inversifyjs/apollo-core';
 import { httpApplicationServiceIdentifier } from '@inversifyjs/http-core';
 import type express from 'express';
@@ -15,7 +16,6 @@ import { type ContainerModuleLoadOptions } from 'inversify';
 import buildApolloServerExpressController from '../controllers/buildApolloServerExpressController.js';
 import { ApolloServerExpressControllerOptions } from '../models/ApolloExpressControllerOptions.js';
 import { ApolloServerInjectOptions } from '../models/ApolloServerInjectOptions.js';
-import { httpServerServiceIdentifier } from '../models/httpServerServiceIdentifier.js';
 
 export default class ApolloExpressServerContainerModule extends ApolloServerContainerModule {
   public static forOptions<TContext extends BaseContext>(
@@ -26,7 +26,8 @@ export default class ApolloExpressServerContainerModule extends ApolloServerCont
       (options: ContainerModuleLoadOptions): void => {
         options
           .bind(buildApolloServerExpressController(controllerOptions))
-          .toSelf();
+          .toSelf()
+          .inSingletonScope();
 
         options
           .bind(httpServerServiceIdentifier)
@@ -36,7 +37,8 @@ export default class ApolloExpressServerContainerModule extends ApolloServerCont
                 application,
               ),
             [httpApplicationServiceIdentifier],
-          );
+          )
+          .inSingletonScope();
 
         options
           .bind(apolloServerPluginsServiceIdentifier)
@@ -46,7 +48,8 @@ export default class ApolloExpressServerContainerModule extends ApolloServerCont
               ApolloServerPluginDrainHttpServer({ httpServer }),
             ],
             [httpServerServiceIdentifier],
-          );
+          )
+          .inSingletonScope();
 
         options
           .bind(apolloServerResolversServiceIdentifier)
