@@ -18,6 +18,7 @@ import {
   apolloServerPluginsServiceIdentifier,
   apolloServerResolversServiceIdentifier,
   apolloServerTypeDefsServiceIdentifier,
+  httpServerServiceIdentifier,
 } from '@inversifyjs/apollo-core';
 import { httpApplicationServiceIdentifier } from '@inversifyjs/http-core';
 import { type ContainerModuleLoadOptions, type Newable } from 'inversify';
@@ -25,7 +26,6 @@ import { type ContainerModuleLoadOptions, type Newable } from 'inversify';
 import buildApolloServerExpressController from '../controllers/buildApolloServerExpressController.js';
 import { type ApolloServerExpressControllerOptions } from '../models/ApolloExpressControllerOptions.js';
 import { type ApolloServerInjectOptions } from '../models/ApolloServerInjectOptions.js';
-import { httpServerServiceIdentifier } from '../models/httpServerServiceIdentifier.js';
 import ApolloExpressServerContainerModule from './ApolloExpressServerContainerModule.js';
 
 describe(ApolloExpressServerContainerModule, () => {
@@ -76,6 +76,7 @@ describe(ApolloExpressServerContainerModule, () => {
 
     describe('when called load()', () => {
       let bindToFluentSyntaxMock: {
+        inSingletonScope: Mock;
         toConstantValue: Mock;
         toSelf: Mock;
         toResolvedValue: Mock;
@@ -91,9 +92,10 @@ describe(ApolloExpressServerContainerModule, () => {
         vitest.clearAllMocks();
 
         bindToFluentSyntaxMock = {
+          inSingletonScope: vitest.fn(),
           toConstantValue: vitest.fn(),
-          toResolvedValue: vitest.fn(),
-          toSelf: vitest.fn(),
+          toResolvedValue: vitest.fn().mockReturnThis(),
+          toSelf: vitest.fn().mockReturnThis(),
           toService: vitest.fn(),
         };
 
@@ -170,6 +172,13 @@ describe(ApolloExpressServerContainerModule, () => {
         ).toHaveBeenCalledExactlyOnceWith(
           serverOptionsFixture.resolverServiceIdentifier,
         );
+      });
+
+      it('should call bind.toResolvedValue().inSingletonScope()', () => {
+        expect(bindToFluentSyntaxMock.inSingletonScope).toHaveBeenCalledTimes(
+          5,
+        );
+        expect(bindToFluentSyntaxMock.inSingletonScope).toHaveBeenCalledWith();
       });
 
       it('should return undefined', () => {

@@ -26,29 +26,33 @@ export class ApolloServerContainerModule extends ContainerModule {
             apolloServerResolversServiceIdentifier,
             apolloServerTypeDefsServiceIdentifier,
           ],
-        );
-      options.bind(apolloServerServiceIdentifier).toResolvedValue(
-        async (
-          plugins: ApolloServerPlugin[] | undefined,
-          schema: GraphQLSchema,
-        ): Promise<ApolloServer> => {
-          const apolloServer: ApolloServer = new ApolloServer({
-            plugins: plugins ?? [],
-            schema,
-          });
+        )
+        .inSingletonScope();
+      options
+        .bind(apolloServerServiceIdentifier)
+        .toResolvedValue(
+          async (
+            plugins: ApolloServerPlugin[][],
+            schema: GraphQLSchema,
+          ): Promise<ApolloServer> => {
+            const apolloServer: ApolloServer = new ApolloServer({
+              plugins: plugins.flat(),
+              schema,
+            });
 
-          await apolloServer.start();
+            await apolloServer.start();
 
-          return apolloServer;
-        },
-        [
-          {
-            optional: true,
-            serviceIdentifier: apolloServerPluginsServiceIdentifier,
+            return apolloServer;
           },
-          apolloServerGraphqlServiceIdentifier,
-        ],
-      );
+          [
+            {
+              isMultiple: true,
+              serviceIdentifier: apolloServerPluginsServiceIdentifier,
+            },
+            apolloServerGraphqlServiceIdentifier,
+          ],
+        )
+        .inSingletonScope();
 
       return load?.(options);
     });

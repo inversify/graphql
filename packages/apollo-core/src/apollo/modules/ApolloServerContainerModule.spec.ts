@@ -9,11 +9,7 @@ import {
   vitest,
 } from 'vitest';
 
-import {
-  BindToFluentSyntax,
-  ContainerModule,
-  ContainerModuleLoadOptions,
-} from 'inversify';
+import { ContainerModule, ContainerModuleLoadOptions } from 'inversify';
 
 import { apolloServerGraphqlServiceIdentifier } from '../models/apolloServerGraphqlServiceIdentifier.js';
 import { apolloServerPluginsServiceIdentifier } from '../models/apolloServerPluginsServiceIdentifier.js';
@@ -39,16 +35,18 @@ describe(ApolloServerContainerModule, () => {
 
       describe('when called load()', () => {
         let containerModuleLoadOptionsMock: Mocked<ContainerModuleLoadOptions>;
-        let bindToFluentSyntaxMock: Mocked<BindToFluentSyntax<unknown>>;
+        let bindToFluentSyntaxMock: {
+          inSingletonScope: Mock;
+          toResolvedValue: Mock;
+        };
 
         let result: unknown;
 
         beforeAll(async () => {
           bindToFluentSyntaxMock = {
-            toResolvedValue: vitest.fn() as unknown,
-          } as Partial<Mocked<BindToFluentSyntax<unknown>>> as Mocked<
-            BindToFluentSyntax<unknown>
-          >;
+            inSingletonScope: vitest.fn(),
+            toResolvedValue: vitest.fn().mockReturnThis(),
+          };
 
           containerModuleLoadOptionsMock = {
             bind: vitest
@@ -90,12 +88,21 @@ describe(ApolloServerContainerModule, () => {
             expect.any(Function),
             [
               {
-                optional: true,
+                isMultiple: true,
                 serviceIdentifier: apolloServerPluginsServiceIdentifier,
               },
               apolloServerGraphqlServiceIdentifier,
             ],
           );
+        });
+
+        it('should call bind.toResolvedValue().inSingletonScope()', () => {
+          expect(bindToFluentSyntaxMock.inSingletonScope).toHaveBeenCalledTimes(
+            2,
+          );
+          expect(
+            bindToFluentSyntaxMock.inSingletonScope,
+          ).toHaveBeenCalledWith();
         });
 
         it('should return undefined', () => {

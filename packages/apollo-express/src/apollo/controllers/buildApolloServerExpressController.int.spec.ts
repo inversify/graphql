@@ -2,18 +2,22 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
 import type http from 'node:http';
 
-import { BaseContext } from '@apollo/server';
-import { ExpressContextFunctionArgument } from '@as-integrations/express5';
+import { type BaseContext } from '@apollo/server';
+import { type ExpressContextFunctionArgument } from '@as-integrations/express5';
 import { type IResolvers, type TypeSource } from '@graphql-tools/utils';
 import {
   ApolloServerContainerModule,
-  ApolloServerController,
+  type ApolloServerController,
   apolloServerResolversServiceIdentifier,
   apolloServerTypeDefsServiceIdentifier,
 } from '@inversifyjs/apollo-core';
 import { InversifyExpressHttpAdapter } from '@inversifyjs/http-express';
-import express from 'express';
-import { Container, ContainerModuleLoadOptions, Newable } from 'inversify';
+import type express from 'express';
+import {
+  Container,
+  type ContainerModuleLoadOptions,
+  type Newable,
+} from 'inversify';
 
 import buildApolloServerExpressController from './buildApolloServerExpressController.js';
 
