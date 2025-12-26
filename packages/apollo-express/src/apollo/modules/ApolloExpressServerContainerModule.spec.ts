@@ -77,6 +77,7 @@ describe(ApolloExpressServerContainerModule, () => {
     describe('when called load()', () => {
       let bindToFluentSyntaxMock: {
         inSingletonScope: Mock;
+        to: Mock;
         toConstantValue: Mock;
         toSelf: Mock;
         toResolvedValue: Mock;
@@ -93,6 +94,7 @@ describe(ApolloExpressServerContainerModule, () => {
 
         bindToFluentSyntaxMock = {
           inSingletonScope: vitest.fn(),
+          to: vitest.fn().mockReturnThis(),
           toConstantValue: vitest.fn(),
           toResolvedValue: vitest.fn().mockReturnThis(),
           toSelf: vitest.fn().mockReturnThis(),
@@ -119,25 +121,25 @@ describe(ApolloExpressServerContainerModule, () => {
       });
 
       it('should call options.bind()', () => {
-        expect(containerModuleLoadOptionsMock.bind).toHaveBeenCalledTimes(7);
+        expect(containerModuleLoadOptionsMock.bind).toHaveBeenCalledTimes(8);
         expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
-          3,
+          4,
           controllerClassMock,
         );
         expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
-          4,
+          5,
           httpServerServiceIdentifier,
         );
         expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
-          5,
+          6,
           apolloServerPluginsServiceIdentifier,
         );
         expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
-          6,
+          7,
           apolloServerResolversServiceIdentifier,
         );
         expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
-          7,
+          8,
           apolloServerTypeDefsServiceIdentifier,
         );
       });
@@ -148,13 +150,11 @@ describe(ApolloExpressServerContainerModule, () => {
 
       it('should call bind.toResolvedValue()', () => {
         expect(bindToFluentSyntaxMock.toResolvedValue).toHaveBeenCalledTimes(4);
-        expect(bindToFluentSyntaxMock.toResolvedValue).toHaveBeenNthCalledWith(
-          3,
+        expect(bindToFluentSyntaxMock.toResolvedValue).toHaveBeenCalledWith(
           expect.any(Function),
           [httpApplicationServiceIdentifier],
         );
-        expect(bindToFluentSyntaxMock.toResolvedValue).toHaveBeenNthCalledWith(
-          4,
+        expect(bindToFluentSyntaxMock.toResolvedValue).toHaveBeenCalledWith(
           expect.any(Function),
           [httpServerServiceIdentifier],
         );
@@ -176,7 +176,7 @@ describe(ApolloExpressServerContainerModule, () => {
 
       it('should call bind.toResolvedValue().inSingletonScope()', () => {
         expect(bindToFluentSyntaxMock.inSingletonScope).toHaveBeenCalledTimes(
-          5,
+          6,
         );
         expect(bindToFluentSyntaxMock.inSingletonScope).toHaveBeenCalledWith();
       });
