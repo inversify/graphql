@@ -18,7 +18,7 @@ import { ApolloServerExpressControllerOptions } from '../models/ApolloExpressCon
 import { ApolloServerInjectOptions } from '../models/ApolloServerInjectOptions.js';
 
 export default class ApolloExpressServerContainerModule extends ApolloServerContainerModule {
-  public static forOptions<TContext extends BaseContext>(
+  public static fromOptions<TContext extends BaseContext>(
     controllerOptions: ApolloServerExpressControllerOptions<TContext>,
     serverOptions: ApolloServerInjectOptions<TContext>,
   ): ApolloExpressServerContainerModule {

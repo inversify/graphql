@@ -29,7 +29,7 @@ import { type ApolloServerInjectOptions } from '../models/ApolloServerInjectOpti
 import ApolloExpressServerContainerModule from './ApolloExpressServerContainerModule.js';
 
 describe(ApolloExpressServerContainerModule, () => {
-  describe('.forOptions()', () => {
+  describe('.fromOptions()', () => {
     let controllerOptionsFixture: ApolloServerExpressControllerOptions<BaseContext>;
     let serverOptionsFixture: ApolloServerInjectOptions<BaseContext>;
     let controllerClassMock: Newable<
@@ -58,7 +58,7 @@ describe(ApolloExpressServerContainerModule, () => {
         .mocked(buildApolloServerExpressController)
         .mockReturnValueOnce(controllerClassMock);
 
-      containerModule = ApolloExpressServerContainerModule.forOptions(
+      containerModule = ApolloExpressServerContainerModule.fromOptions(
         controllerOptionsFixture,
         serverOptionsFixture,
       );
