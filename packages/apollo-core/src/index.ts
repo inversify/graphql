@@ -5,4 +5,7 @@ export { apolloServerResolversServiceIdentifier } from './apollo/models/apolloSe
 export { apolloServerTypeDefsServiceIdentifier } from './apollo/models/apolloServerTypeDefsServiceIdentifier.js';
 export { apolloServerServiceIdentifier } from './apollo/models/apolloServerServiceIdentifier.js';
 export { httpServerServiceIdentifier } from './apollo/models/httpServerServiceIdentifier.js';
+export { inversifyApolloProviderServiceIdentifier } from './apollo/models/inversifyApolloProviderServiceIdentifier.js';
 export { ApolloServerContainerModule } from './apollo/modules/ApolloServerContainerModule.js';
+
+export { type InversifyApolloProvider } from './apollo/modules/InversifyApolloProvider.js';
