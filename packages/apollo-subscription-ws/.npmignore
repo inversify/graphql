@@ -3,8 +3,7 @@
 /docs
 /reports
 
-lib/**/*.spec.js
-lib/**/*.spec.js.map
+{lib,src}/**/*.spec.{d.ts,d.ts.map,js,js.map}
 
 src/
 
