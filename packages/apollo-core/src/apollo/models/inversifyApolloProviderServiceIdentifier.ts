@@ -1,6 +1,6 @@
 import { ServiceIdentifier } from 'inversify';
 
-import { InversifyApolloProvider } from '../modules/InversifyApolloProvider';
+import { type InversifyApolloProvider } from '../modules/InversifyApolloProvider.js';
 
 export const inversifyApolloProviderServiceIdentifier: ServiceIdentifier<InversifyApolloProvider> =
   Symbol.for('@inversifyjs/apollo-core/InversifyApolloProvider');
