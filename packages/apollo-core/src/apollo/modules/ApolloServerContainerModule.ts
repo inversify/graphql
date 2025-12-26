@@ -9,6 +9,8 @@ import { apolloServerPluginsServiceIdentifier } from '../models/apolloServerPlug
 import { apolloServerResolversServiceIdentifier } from '../models/apolloServerResolversServiceIdentifier.js';
 import { apolloServerServiceIdentifier } from '../models/apolloServerServiceIdentifier.js';
 import { apolloServerTypeDefsServiceIdentifier } from '../models/apolloServerTypeDefsServiceIdentifier.js';
+import { inversifyApolloProviderServiceIdentifier } from '../models/inversifyApolloProviderServiceIdentifier.js';
+import { InversifyApolloProviderImplementation } from './InversifyApolloProviderImplementation.js';
 
 export class ApolloServerContainerModule extends ContainerModule {
   constructor(
@@ -52,6 +54,11 @@ export class ApolloServerContainerModule extends ContainerModule {
             apolloServerGraphqlServiceIdentifier,
           ],
         )
+        .inSingletonScope();
+
+      options
+        .bind(inversifyApolloProviderServiceIdentifier)
+        .to(InversifyApolloProviderImplementation)
         .inSingletonScope();
 
       return load?.(options);
