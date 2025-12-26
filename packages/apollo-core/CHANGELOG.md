@@ -1,5 +1,12 @@
 # @inversifyjs/apollo-core
 
+## 0.4.0
+
+### Minor Changes
+
+- Added `InversifyApolloProvider`
+- Added `inversifyApolloProviderServiceIdentifier`
+
 ## 0.3.0
 
 ### Minor Changes
