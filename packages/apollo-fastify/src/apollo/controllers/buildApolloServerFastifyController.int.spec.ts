@@ -94,9 +94,6 @@ schema {
           },
         );
 
-        // console.log('status', response.status);
-        // console.log('response', await response.text());
-
         result = await response.json();
       });
 

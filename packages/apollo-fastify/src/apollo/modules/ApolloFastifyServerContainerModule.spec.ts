@@ -39,8 +39,6 @@ describe(ApolloFastifyServerContainerModule, () => {
       >
     >;
 
-    let containerModule: ApolloFastifyServerContainerModule;
-
     beforeAll(() => {
       controllerOptionsFixture = {
         controllerOptions: '/graphql',
@@ -52,67 +50,26 @@ describe(ApolloFastifyServerContainerModule, () => {
         resolverServiceIdentifier: Symbol(),
         typeDefs: 'type Query { hello: String }',
       };
-
-      controllerClassMock = class {} as Newable<
-        ApolloServerController<
-          BaseContext,
-          [ApolloFastifyContextFunctionArgument]
-        >
-      >;
-
-      vitest
-        .mocked(buildApolloServerFastifyController)
-        .mockReturnValueOnce(controllerClassMock);
-
-      containerModule = ApolloFastifyServerContainerModule.fromOptions(
-        controllerOptionsFixture,
-        serverOptionsFixture,
-      );
     });
 
-    afterAll(() => {
-      vitest.clearAllMocks();
-    });
+    describe('when called', () => {
+      let containerModule: ApolloFastifyServerContainerModule;
 
-    it('should return ApolloFastifyServerContainerModule', () => {
-      expect(containerModule).toBeInstanceOf(
-        ApolloFastifyServerContainerModule,
-      );
-    });
+      beforeAll(() => {
+        controllerClassMock = class {} as Newable<
+          ApolloServerController<
+            BaseContext,
+            [ApolloFastifyContextFunctionArgument]
+          >
+        >;
 
-    describe('when called load()', () => {
-      let bindToFluentSyntaxMock: {
-        inSingletonScope: Mock;
-        to: Mock;
-        toConstantValue: Mock;
-        toSelf: Mock;
-        toResolvedValue: Mock;
-        toService: Mock;
-      };
-      let containerModuleLoadOptionsMock: {
-        bind: Mock;
-      };
+        vitest
+          .mocked(buildApolloServerFastifyController)
+          .mockReturnValueOnce(controllerClassMock);
 
-      let result: unknown;
-
-      beforeAll(async () => {
-        vitest.clearAllMocks();
-
-        bindToFluentSyntaxMock = {
-          inSingletonScope: vitest.fn(),
-          to: vitest.fn().mockReturnThis(),
-          toConstantValue: vitest.fn(),
-          toResolvedValue: vitest.fn().mockReturnThis(),
-          toSelf: vitest.fn().mockReturnThis(),
-          toService: vitest.fn(),
-        };
-
-        containerModuleLoadOptionsMock = {
-          bind: vitest.fn().mockReturnValue(bindToFluentSyntaxMock),
-        };
-
-        result = await containerModule.load(
-          containerModuleLoadOptionsMock as unknown as ContainerModuleLoadOptions,
+        containerModule = ApolloFastifyServerContainerModule.fromOptions(
+          controllerOptionsFixture,
+          serverOptionsFixture,
         );
       });
 
@@ -120,71 +77,124 @@ describe(ApolloFastifyServerContainerModule, () => {
         vitest.clearAllMocks();
       });
 
-      it('should call buildApolloServerFastifyController()', () => {
-        expect(
-          buildApolloServerFastifyController,
-        ).toHaveBeenCalledExactlyOnceWith(controllerOptionsFixture);
-      });
-
-      it('should call options.bind()', () => {
-        expect(containerModuleLoadOptionsMock.bind).toHaveBeenCalledTimes(8);
-        expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
-          4,
-          controllerClassMock,
-        );
-        expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
-          5,
-          httpServerServiceIdentifier,
-        );
-        expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
-          6,
-          apolloServerPluginsServiceIdentifier,
-        );
-        expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
-          7,
-          apolloServerResolversServiceIdentifier,
-        );
-        expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
-          8,
-          apolloServerTypeDefsServiceIdentifier,
+      it('should return ApolloFastifyServerContainerModule', () => {
+        expect(containerModule).toBeInstanceOf(
+          ApolloFastifyServerContainerModule,
         );
       });
 
-      it('should call bind.toSelf()', () => {
-        expect(bindToFluentSyntaxMock.toSelf).toHaveBeenCalledExactlyOnceWith();
-      });
+      describe('when called load()', () => {
+        let bindToFluentSyntaxMock: {
+          inSingletonScope: Mock;
+          to: Mock;
+          toConstantValue: Mock;
+          toSelf: Mock;
+          toResolvedValue: Mock;
+          toService: Mock;
+        };
+        let containerModuleLoadOptionsMock: {
+          bind: Mock;
+        };
 
-      it('should call bind.toResolvedValue()', () => {
-        expect(bindToFluentSyntaxMock.toResolvedValue).toHaveBeenCalledTimes(4);
-        expect(bindToFluentSyntaxMock.toResolvedValue).toHaveBeenCalledWith(
-          expect.any(Function),
-          [httpApplicationServiceIdentifier],
-        );
-      });
+        let result: unknown;
 
-      it('should call bind.toConstantValue()', () => {
-        expect(
-          bindToFluentSyntaxMock.toConstantValue,
-        ).toHaveBeenCalledExactlyOnceWith(serverOptionsFixture.typeDefs);
-      });
+        beforeAll(async () => {
+          vitest.clearAllMocks();
 
-      it('should call bind.toService()', () => {
-        expect(
-          bindToFluentSyntaxMock.toService,
-        ).toHaveBeenCalledExactlyOnceWith(
-          serverOptionsFixture.resolverServiceIdentifier,
-        );
-      });
+          bindToFluentSyntaxMock = {
+            inSingletonScope: vitest.fn(),
+            to: vitest.fn().mockReturnThis(),
+            toConstantValue: vitest.fn(),
+            toResolvedValue: vitest.fn().mockReturnThis(),
+            toSelf: vitest.fn().mockReturnThis(),
+            toService: vitest.fn(),
+          };
 
-      it('should call bind.toResolvedValue().inSingletonScope()', () => {
-        expect(bindToFluentSyntaxMock.inSingletonScope).toHaveBeenCalledTimes(
-          6,
-        );
-        expect(bindToFluentSyntaxMock.inSingletonScope).toHaveBeenCalledWith();
-      });
+          containerModuleLoadOptionsMock = {
+            bind: vitest.fn().mockReturnValue(bindToFluentSyntaxMock),
+          };
 
-      it('should return undefined', () => {
-        expect(result).toBeUndefined();
+          result = await containerModule.load(
+            containerModuleLoadOptionsMock as unknown as ContainerModuleLoadOptions,
+          );
+        });
+
+        afterAll(() => {
+          vitest.clearAllMocks();
+        });
+
+        it('should call buildApolloServerFastifyController()', () => {
+          expect(
+            buildApolloServerFastifyController,
+          ).toHaveBeenCalledExactlyOnceWith(controllerOptionsFixture);
+        });
+
+        it('should call options.bind()', () => {
+          expect(containerModuleLoadOptionsMock.bind).toHaveBeenCalledTimes(8);
+          expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
+            4,
+            controllerClassMock,
+          );
+          expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
+            5,
+            httpServerServiceIdentifier,
+          );
+          expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
+            6,
+            apolloServerPluginsServiceIdentifier,
+          );
+          expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
+            7,
+            apolloServerResolversServiceIdentifier,
+          );
+          expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
+            8,
+            apolloServerTypeDefsServiceIdentifier,
+          );
+        });
+
+        it('should call bind.toSelf()', () => {
+          expect(
+            bindToFluentSyntaxMock.toSelf,
+          ).toHaveBeenCalledExactlyOnceWith();
+        });
+
+        it('should call bind.toResolvedValue()', () => {
+          expect(bindToFluentSyntaxMock.toResolvedValue).toHaveBeenCalledTimes(
+            4,
+          );
+          expect(bindToFluentSyntaxMock.toResolvedValue).toHaveBeenCalledWith(
+            expect.any(Function),
+            [httpApplicationServiceIdentifier],
+          );
+        });
+
+        it('should call bind.toConstantValue()', () => {
+          expect(
+            bindToFluentSyntaxMock.toConstantValue,
+          ).toHaveBeenCalledExactlyOnceWith(serverOptionsFixture.typeDefs);
+        });
+
+        it('should call bind.toService()', () => {
+          expect(
+            bindToFluentSyntaxMock.toService,
+          ).toHaveBeenCalledExactlyOnceWith(
+            serverOptionsFixture.resolverServiceIdentifier,
+          );
+        });
+
+        it('should call bind.toResolvedValue().inSingletonScope()', () => {
+          expect(bindToFluentSyntaxMock.inSingletonScope).toHaveBeenCalledTimes(
+            6,
+          );
+          expect(
+            bindToFluentSyntaxMock.inSingletonScope,
+          ).toHaveBeenCalledWith();
+        });
+
+        it('should return undefined', () => {
+          expect(result).toBeUndefined();
+        });
       });
     });
   });
