@@ -14,12 +14,12 @@ import type express from 'express';
 import { type ContainerModuleLoadOptions } from 'inversify';
 
 import buildApolloServerExpressController from '../controllers/buildApolloServerExpressController.js';
-import { ApolloServerExpressControllerOptions } from '../models/ApolloExpressControllerOptions.js';
+import { ApolloExpressControllerOptions } from '../models/ApolloExpressControllerOptions.js';
 import { ApolloServerInjectOptions } from '../models/ApolloServerInjectOptions.js';
 
 export default class ApolloExpressServerContainerModule extends ApolloServerContainerModule {
   public static fromOptions<TContext extends BaseContext>(
-    controllerOptions: ApolloServerExpressControllerOptions<TContext>,
+    controllerOptions: ApolloExpressControllerOptions<TContext>,
     serverOptions: ApolloServerInjectOptions<TContext>,
   ): ApolloExpressServerContainerModule {
     return new ApolloExpressServerContainerModule(

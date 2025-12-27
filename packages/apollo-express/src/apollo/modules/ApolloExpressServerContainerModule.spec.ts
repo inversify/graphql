@@ -24,13 +24,13 @@ import { httpApplicationServiceIdentifier } from '@inversifyjs/http-core';
 import { type ContainerModuleLoadOptions, type Newable } from 'inversify';
 
 import buildApolloServerExpressController from '../controllers/buildApolloServerExpressController.js';
-import { type ApolloServerExpressControllerOptions } from '../models/ApolloExpressControllerOptions.js';
+import { type ApolloExpressControllerOptions } from '../models/ApolloExpressControllerOptions.js';
 import { type ApolloServerInjectOptions } from '../models/ApolloServerInjectOptions.js';
 import ApolloExpressServerContainerModule from './ApolloExpressServerContainerModule.js';
 
 describe(ApolloExpressServerContainerModule, () => {
   describe('.fromOptions()', () => {
-    let controllerOptionsFixture: ApolloServerExpressControllerOptions<BaseContext>;
+    let controllerOptionsFixture: ApolloExpressControllerOptions<BaseContext>;
     let serverOptionsFixture: ApolloServerInjectOptions<BaseContext>;
     let controllerClassMock: Newable<
       ApolloServerController<BaseContext, [ExpressContextFunctionArgument]>

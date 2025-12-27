@@ -1,6 +1,6 @@
 import { ApolloServer, type BaseContext } from '@apollo/server';
 import {
-  ExpressContextFunctionArgument,
+  type ExpressContextFunctionArgument,
   expressMiddleware,
 } from '@as-integrations/express5';
 import {
@@ -17,12 +17,12 @@ import {
 import type express from 'express';
 import { inject, Newable } from 'inversify';
 
-import { ApolloServerExpressControllerOptions } from '../models/ApolloExpressControllerOptions.js';
+import { ApolloExpressControllerOptions } from '../models/ApolloExpressControllerOptions.js';
 
 export default function buildApolloServerExpressController<
   TContext extends BaseContext = BaseContext,
 >(
-  options: ApolloServerExpressControllerOptions<TContext>,
+  options: ApolloExpressControllerOptions<TContext>,
 ): Newable<ApolloServerController<TContext, [ExpressContextFunctionArgument]>> {
   @Controller(options.controllerOptions)
   class ApolloServerExpressController extends ApolloServerController<
