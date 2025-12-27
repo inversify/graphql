@@ -1,7 +1,7 @@
 import http from 'node:http';
 
 import { type BaseContext } from '@apollo/server';
-import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
+import { fastifyApolloDrainPlugin } from '@as-integrations/fastify';
 import {
   ApolloServerContainerModule,
   apolloServerPluginsServiceIdentifier,
@@ -10,32 +10,29 @@ import {
   httpServerServiceIdentifier,
 } from '@inversifyjs/apollo-core';
 import { httpApplicationServiceIdentifier } from '@inversifyjs/http-core';
-import type express from 'express';
+import { type FastifyInstance } from 'fastify';
 import { type ContainerModuleLoadOptions } from 'inversify';
 
-import buildApolloServerExpressController from '../controllers/buildApolloServerExpressController.js';
-import { ApolloExpressControllerOptions } from '../models/ApolloExpressControllerOptions.js';
+import buildApolloServerFastifyController from '../controllers/buildApolloServerFastifyController.js';
+import { ApolloFastifyControllerOptions } from '../models/ApolloFastifyControllerOptions.js';
 import { ApolloServerInjectOptions } from '../models/ApolloServerInjectOptions.js';
 
-export default class ApolloExpressServerContainerModule extends ApolloServerContainerModule {
+export default class ApolloFastifyServerContainerModule extends ApolloServerContainerModule {
   public static fromOptions<TContext extends BaseContext>(
-    controllerOptions: ApolloExpressControllerOptions<TContext>,
+    controllerOptions: ApolloFastifyControllerOptions<TContext>,
     serverOptions: ApolloServerInjectOptions<TContext>,
-  ): ApolloExpressServerContainerModule {
-    return new ApolloExpressServerContainerModule(
+  ): ApolloFastifyServerContainerModule {
+    return new ApolloFastifyServerContainerModule(
       (options: ContainerModuleLoadOptions): void => {
         options
-          .bind(buildApolloServerExpressController(controllerOptions))
+          .bind(buildApolloServerFastifyController(controllerOptions))
           .toSelf()
           .inSingletonScope();
 
         options
           .bind(httpServerServiceIdentifier)
           .toResolvedValue(
-            (application: express.Application) =>
-              (serverOptions.http?.createServer ?? http.createServer)(
-                application,
-              ),
+            (instance: FastifyInstance): http.Server => instance.server,
             [httpApplicationServiceIdentifier],
           )
           .inSingletonScope();
@@ -43,11 +40,11 @@ export default class ApolloExpressServerContainerModule extends ApolloServerCont
         options
           .bind(apolloServerPluginsServiceIdentifier)
           .toResolvedValue(
-            (httpServer: http.Server) => [
+            (instance: FastifyInstance) => [
               ...(serverOptions.plugins ?? []),
-              ApolloServerPluginDrainHttpServer({ httpServer }),
+              fastifyApolloDrainPlugin(instance),
             ],
-            [httpServerServiceIdentifier],
+            [httpApplicationServiceIdentifier],
           )
           .inSingletonScope();
 

@@ -51,7 +51,7 @@ type RootSubscription {
       const resolverServiceIdentifier: ServiceIdentifier<IResolvers> = Symbol();
 
       const containerModule: ApolloExpressServerContainerModule =
-        ApolloExpressServerContainerModule.forOptions(
+        ApolloExpressServerContainerModule.fromOptions(
           {
             getContext: async (
               _args: ExpressContextFunctionArgument,
