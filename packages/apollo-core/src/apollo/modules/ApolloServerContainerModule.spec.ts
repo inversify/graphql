@@ -16,7 +16,6 @@ import { apolloServerPluginsServiceIdentifier } from '../models/apolloServerPlug
 import { apolloServerResolversServiceIdentifier } from '../models/apolloServerResolversServiceIdentifier.js';
 import { apolloServerServiceIdentifier } from '../models/apolloServerServiceIdentifier.js';
 import { apolloServerTypeDefsServiceIdentifier } from '../models/apolloServerTypeDefsServiceIdentifier.js';
-import { inversifyApolloProviderServiceIdentifier } from '../models/inversifyApolloProviderServiceIdentifier.js';
 import { ApolloServerContainerModule } from './ApolloServerContainerModule.js';
 
 describe(ApolloServerContainerModule, () => {
@@ -38,7 +37,6 @@ describe(ApolloServerContainerModule, () => {
         let containerModuleLoadOptionsMock: Mocked<ContainerModuleLoadOptions>;
         let bindToFluentSyntaxMock: {
           inSingletonScope: Mock;
-          to: Mock;
           toResolvedValue: Mock;
         };
 
@@ -47,7 +45,6 @@ describe(ApolloServerContainerModule, () => {
         beforeAll(async () => {
           bindToFluentSyntaxMock = {
             inSingletonScope: vitest.fn(),
-            to: vitest.fn().mockReturnThis(),
             toResolvedValue: vitest.fn().mockReturnThis(),
           };
 
@@ -67,15 +64,12 @@ describe(ApolloServerContainerModule, () => {
         });
 
         it('should call options.bind()', () => {
-          expect(containerModuleLoadOptionsMock.bind).toHaveBeenCalledTimes(3);
+          expect(containerModuleLoadOptionsMock.bind).toHaveBeenCalledTimes(2);
           expect(containerModuleLoadOptionsMock.bind).toHaveBeenCalledWith(
             apolloServerGraphqlServiceIdentifier,
           );
           expect(containerModuleLoadOptionsMock.bind).toHaveBeenCalledWith(
             apolloServerServiceIdentifier,
-          );
-          expect(containerModuleLoadOptionsMock.bind).toHaveBeenCalledWith(
-            inversifyApolloProviderServiceIdentifier,
           );
         });
 
@@ -102,16 +96,9 @@ describe(ApolloServerContainerModule, () => {
           );
         });
 
-        it('should call bind.to()', () => {
-          expect(bindToFluentSyntaxMock.to).toHaveBeenCalledTimes(1);
-          expect(bindToFluentSyntaxMock.to).toHaveBeenCalledWith(
-            expect.any(Function),
-          );
-        });
-
         it('should call bind.toResolvedValue().inSingletonScope()', () => {
           expect(bindToFluentSyntaxMock.inSingletonScope).toHaveBeenCalledTimes(
-            3,
+            2,
           );
           expect(
             bindToFluentSyntaxMock.inSingletonScope,

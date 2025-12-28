@@ -8,6 +8,7 @@ import {
   apolloServerResolversServiceIdentifier,
   apolloServerTypeDefsServiceIdentifier,
   httpServerServiceIdentifier,
+  inversifyApolloProviderServiceIdentifier,
 } from '@inversifyjs/apollo-core';
 import { httpApplicationServiceIdentifier } from '@inversifyjs/http-core';
 import { type FastifyInstance } from 'fastify';
@@ -16,6 +17,7 @@ import { type ContainerModuleLoadOptions } from 'inversify';
 import buildApolloServerFastifyController from '../controllers/buildApolloServerFastifyController.js';
 import { ApolloFastifyControllerOptions } from '../models/ApolloFastifyControllerOptions.js';
 import { ApolloServerInjectOptions } from '../models/ApolloServerInjectOptions.js';
+import { InversifyApolloProviderImplementation } from './InversifyApolloProviderImplementation.js';
 
 export default class ApolloFastifyServerContainerModule extends ApolloServerContainerModule {
   public static fromOptions<TContext extends BaseContext>(
@@ -55,6 +57,11 @@ export default class ApolloFastifyServerContainerModule extends ApolloServerCont
         options
           .bind(apolloServerTypeDefsServiceIdentifier)
           .toConstantValue(serverOptions.typeDefs);
+
+        options
+          .bind(inversifyApolloProviderServiceIdentifier)
+          .to(InversifyApolloProviderImplementation)
+          .inSingletonScope();
       },
     );
   }
