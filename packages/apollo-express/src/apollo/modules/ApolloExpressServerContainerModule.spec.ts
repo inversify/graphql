@@ -19,6 +19,7 @@ import {
   apolloServerResolversServiceIdentifier,
   apolloServerTypeDefsServiceIdentifier,
   httpServerServiceIdentifier,
+  inversifyApolloProviderServiceIdentifier,
 } from '@inversifyjs/apollo-core';
 import { httpApplicationServiceIdentifier } from '@inversifyjs/http-core';
 import { type ContainerModuleLoadOptions, type Newable } from 'inversify';
@@ -123,24 +124,28 @@ describe(ApolloExpressServerContainerModule, () => {
       it('should call options.bind()', () => {
         expect(containerModuleLoadOptionsMock.bind).toHaveBeenCalledTimes(8);
         expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
-          4,
+          3,
           controllerClassMock,
         );
         expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
-          5,
+          4,
           httpServerServiceIdentifier,
         );
         expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
-          6,
+          5,
           apolloServerPluginsServiceIdentifier,
         );
         expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
-          7,
+          6,
           apolloServerResolversServiceIdentifier,
         );
         expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
-          8,
+          7,
           apolloServerTypeDefsServiceIdentifier,
+        );
+        expect(containerModuleLoadOptionsMock.bind).toHaveBeenNthCalledWith(
+          8,
+          inversifyApolloProviderServiceIdentifier,
         );
       });
 

@@ -8,6 +8,7 @@ import {
   apolloServerResolversServiceIdentifier,
   apolloServerTypeDefsServiceIdentifier,
   httpServerServiceIdentifier,
+  inversifyApolloProviderServiceIdentifier,
 } from '@inversifyjs/apollo-core';
 import { httpApplicationServiceIdentifier } from '@inversifyjs/http-core';
 import type express from 'express';
@@ -16,6 +17,7 @@ import { type ContainerModuleLoadOptions } from 'inversify';
 import buildApolloServerExpressController from '../controllers/buildApolloServerExpressController.js';
 import { ApolloExpressControllerOptions } from '../models/ApolloExpressControllerOptions.js';
 import { ApolloServerInjectOptions } from '../models/ApolloServerInjectOptions.js';
+import { InversifyApolloProviderImplementation } from './InversifyApolloProviderImplementation.js';
 
 export default class ApolloExpressServerContainerModule extends ApolloServerContainerModule {
   public static fromOptions<TContext extends BaseContext>(
@@ -58,6 +60,11 @@ export default class ApolloExpressServerContainerModule extends ApolloServerCont
         options
           .bind(apolloServerTypeDefsServiceIdentifier)
           .toConstantValue(serverOptions.typeDefs);
+
+        options
+          .bind(inversifyApolloProviderServiceIdentifier)
+          .to(InversifyApolloProviderImplementation)
+          .inSingletonScope();
       },
     );
   }
