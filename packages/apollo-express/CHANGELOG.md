@@ -1,5 +1,18 @@
 # @inversifyjs/apollo-express
 
+## 0.6.0
+
+### Minor Changes
+
+- Renamed `ApolloExpressServerContainerModule.forOptions` to `fromOptions`
+- Updated `InversifyApolloProvider` with generic type
+  Renamed `ApolloServerExpressControllerOptions` to `ApolloExpressControllerOptions`
+
+### Patch Changes
+
+- Updated dependencies
+  - @inversifyjs/apollo-core@0.5.0
+
 ## 0.5.1
 
 ### Patch Changes

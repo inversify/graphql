@@ -1,5 +1,12 @@
 # @inversifyjs/apollo-subscription-ws
 
+## 0.2.3
+
+### Patch Changes
+
+- Updated dependencies
+  - @inversifyjs/apollo-core@0.5.0
+
 ## 0.2.2
 
 ### Patch Changes
