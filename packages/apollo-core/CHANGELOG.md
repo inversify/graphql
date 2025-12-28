@@ -1,5 +1,11 @@
 # @inversifyjs/apollo-core
 
+## 0.5.0
+
+### Minor Changes
+
+- Updated `InversifyApolloProvider` with generic type
+
 ## 0.4.0
 
 ### Minor Changes
