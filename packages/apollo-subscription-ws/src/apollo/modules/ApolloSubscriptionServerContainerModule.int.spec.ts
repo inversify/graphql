@@ -295,11 +295,7 @@ type RootSubscription {
 
       fastifyInstance = await adapter.build();
 
-      await new Promise<void>((resolve: () => void) => {
-        fastifyInstance.listen(() => {
-          resolve();
-        });
-      });
+      await fastifyInstance.listen();
 
       httpServerPort = (fastifyInstance.server.address() as { port: number })
         .port;
