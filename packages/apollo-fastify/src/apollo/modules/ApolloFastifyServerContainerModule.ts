@@ -19,49 +19,71 @@ import { ApolloFastifyControllerOptions } from '../models/ApolloFastifyControlle
 import { ApolloServerInjectOptions } from '../models/ApolloServerInjectOptions.js';
 import { InversifyApolloProviderImplementation } from './InversifyApolloProviderImplementation.js';
 
+function loadBindings<TContext extends BaseContext>(
+  controllerOptions: ApolloFastifyControllerOptions<TContext>,
+  serverOptions: ApolloServerInjectOptions<TContext>,
+): (options: ContainerModuleLoadOptions) => void {
+  return (options: ContainerModuleLoadOptions): void => {
+    options
+      .bind(buildApolloServerFastifyController(controllerOptions))
+      .toSelf()
+      .inSingletonScope();
+
+    options
+      .bind(httpServerServiceIdentifier)
+      .toResolvedValue(
+        (instance: FastifyInstance): http.Server => instance.server,
+        [httpApplicationServiceIdentifier],
+      )
+      .inSingletonScope();
+
+    options
+      .bind(apolloServerPluginsServiceIdentifier)
+      .toResolvedValue(
+        (instance: FastifyInstance) => [
+          ...(serverOptions.plugins ?? []),
+          fastifyApolloDrainPlugin(instance),
+        ],
+        [httpApplicationServiceIdentifier],
+      )
+      .inSingletonScope();
+
+    options
+      .bind(apolloServerResolversServiceIdentifier)
+      .toService(serverOptions.resolverServiceIdentifier);
+
+    options
+      .bind(apolloServerTypeDefsServiceIdentifier)
+      .toConstantValue(serverOptions.typeDefs);
+
+    options
+      .bind(inversifyApolloProviderServiceIdentifier)
+      .to(InversifyApolloProviderImplementation)
+      .inSingletonScope();
+  };
+}
+
 export default class ApolloFastifyServerContainerModule extends ApolloServerContainerModule {
-  public static fromOptions<TContext extends BaseContext>(
+  public static graphServerFromOptions<TContext extends BaseContext>(
     controllerOptions: ApolloFastifyControllerOptions<TContext>,
     serverOptions: ApolloServerInjectOptions<TContext>,
   ): ApolloFastifyServerContainerModule {
     return new ApolloFastifyServerContainerModule(
-      (options: ContainerModuleLoadOptions): void => {
-        options
-          .bind(buildApolloServerFastifyController(controllerOptions))
-          .toSelf()
-          .inSingletonScope();
+      loadBindings(controllerOptions, serverOptions),
+      {
+        isSubgraph: false,
+      },
+    );
+  }
 
-        options
-          .bind(httpServerServiceIdentifier)
-          .toResolvedValue(
-            (instance: FastifyInstance): http.Server => instance.server,
-            [httpApplicationServiceIdentifier],
-          )
-          .inSingletonScope();
-
-        options
-          .bind(apolloServerPluginsServiceIdentifier)
-          .toResolvedValue(
-            (instance: FastifyInstance) => [
-              ...(serverOptions.plugins ?? []),
-              fastifyApolloDrainPlugin(instance),
-            ],
-            [httpApplicationServiceIdentifier],
-          )
-          .inSingletonScope();
-
-        options
-          .bind(apolloServerResolversServiceIdentifier)
-          .toService(serverOptions.resolverServiceIdentifier);
-
-        options
-          .bind(apolloServerTypeDefsServiceIdentifier)
-          .toConstantValue(serverOptions.typeDefs);
-
-        options
-          .bind(inversifyApolloProviderServiceIdentifier)
-          .to(InversifyApolloProviderImplementation)
-          .inSingletonScope();
+  public static subgraphServerFromOptions<TContext extends BaseContext>(
+    controllerOptions: ApolloFastifyControllerOptions<TContext>,
+    serverOptions: ApolloServerInjectOptions<TContext>,
+  ): ApolloFastifyServerContainerModule {
+    return new ApolloFastifyServerContainerModule(
+      loadBindings(controllerOptions, serverOptions),
+      {
+        isSubgraph: true,
       },
     );
   }

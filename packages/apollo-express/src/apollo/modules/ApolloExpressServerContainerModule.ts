@@ -19,52 +19,72 @@ import { ApolloExpressControllerOptions } from '../models/ApolloExpressControlle
 import { ApolloServerInjectOptions } from '../models/ApolloServerInjectOptions.js';
 import { InversifyApolloProviderImplementation } from './InversifyApolloProviderImplementation.js';
 
+function loadBindings<TContext extends BaseContext>(
+  controllerOptions: ApolloExpressControllerOptions<TContext>,
+  serverOptions: ApolloServerInjectOptions<TContext>,
+): (options: ContainerModuleLoadOptions) => void {
+  return (options: ContainerModuleLoadOptions): void => {
+    options
+      .bind(buildApolloServerExpressController(controllerOptions))
+      .toSelf()
+      .inSingletonScope();
+
+    options
+      .bind(httpServerServiceIdentifier)
+      .toResolvedValue(
+        (application: express.Application) =>
+          (serverOptions.http?.createServer ?? http.createServer)(application),
+        [httpApplicationServiceIdentifier],
+      )
+      .inSingletonScope();
+
+    options
+      .bind(apolloServerPluginsServiceIdentifier)
+      .toResolvedValue(
+        (httpServer: http.Server) => [
+          ...(serverOptions.plugins ?? []),
+          ApolloServerPluginDrainHttpServer({ httpServer }),
+        ],
+        [httpServerServiceIdentifier],
+      )
+      .inSingletonScope();
+
+    options
+      .bind(apolloServerResolversServiceIdentifier)
+      .toService(serverOptions.resolverServiceIdentifier);
+
+    options
+      .bind(apolloServerTypeDefsServiceIdentifier)
+      .toConstantValue(serverOptions.typeDefs);
+
+    options
+      .bind(inversifyApolloProviderServiceIdentifier)
+      .to(InversifyApolloProviderImplementation)
+      .inSingletonScope();
+  };
+}
+
 export default class ApolloExpressServerContainerModule extends ApolloServerContainerModule {
-  public static fromOptions<TContext extends BaseContext>(
+  public static graphServerFromOptions<TContext extends BaseContext>(
     controllerOptions: ApolloExpressControllerOptions<TContext>,
     serverOptions: ApolloServerInjectOptions<TContext>,
   ): ApolloExpressServerContainerModule {
     return new ApolloExpressServerContainerModule(
-      (options: ContainerModuleLoadOptions): void => {
-        options
-          .bind(buildApolloServerExpressController(controllerOptions))
-          .toSelf()
-          .inSingletonScope();
+      loadBindings(controllerOptions, serverOptions),
+      {
+        isSubgraph: false,
+      },
+    );
+  }
 
-        options
-          .bind(httpServerServiceIdentifier)
-          .toResolvedValue(
-            (application: express.Application) =>
-              (serverOptions.http?.createServer ?? http.createServer)(
-                application,
-              ),
-            [httpApplicationServiceIdentifier],
-          )
-          .inSingletonScope();
-
-        options
-          .bind(apolloServerPluginsServiceIdentifier)
-          .toResolvedValue(
-            (httpServer: http.Server) => [
-              ...(serverOptions.plugins ?? []),
-              ApolloServerPluginDrainHttpServer({ httpServer }),
-            ],
-            [httpServerServiceIdentifier],
-          )
-          .inSingletonScope();
-
-        options
-          .bind(apolloServerResolversServiceIdentifier)
-          .toService(serverOptions.resolverServiceIdentifier);
-
-        options
-          .bind(apolloServerTypeDefsServiceIdentifier)
-          .toConstantValue(serverOptions.typeDefs);
-
-        options
-          .bind(inversifyApolloProviderServiceIdentifier)
-          .to(InversifyApolloProviderImplementation)
-          .inSingletonScope();
+  public static subgraphServerFromOptions<TContext extends BaseContext>(
+    controllerOptions: ApolloExpressControllerOptions<TContext>,
+    serverOptions: ApolloServerInjectOptions<TContext>,
+  ): ApolloExpressServerContainerModule {
+    return new ApolloExpressServerContainerModule(
+      loadBindings(controllerOptions, serverOptions),
+      {
+        isSubgraph: true,
       },
     );
   }

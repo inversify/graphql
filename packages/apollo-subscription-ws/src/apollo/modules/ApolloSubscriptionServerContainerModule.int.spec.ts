@@ -55,7 +55,7 @@ type RootSubscription {
       const resolverServiceIdentifier: ServiceIdentifier<IResolvers> = Symbol();
 
       const containerModule: ApolloExpressServerContainerModule =
-        ApolloExpressServerContainerModule.fromOptions(
+        ApolloExpressServerContainerModule.graphServerFromOptions(
           {
             getContext: async (
               _args: ExpressContextFunctionArgument,
@@ -265,7 +265,7 @@ type RootSubscription {
       const resolverServiceIdentifier: ServiceIdentifier<IResolvers> = Symbol();
 
       const containerModule: ApolloFastifyServerContainerModule =
-        ApolloFastifyServerContainerModule.fromOptions(
+        ApolloFastifyServerContainerModule.graphServerFromOptions(
           {
             getContext: async (
               _args: ApolloFastifyContextFunctionArgument,
