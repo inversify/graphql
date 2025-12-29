@@ -8,4 +8,5 @@ export { httpServerServiceIdentifier } from './apollo/models/httpServerServiceId
 export { inversifyApolloProviderServiceIdentifier } from './apollo/models/inversifyApolloProviderServiceIdentifier.js';
 export { ApolloServerContainerModule } from './apollo/modules/ApolloServerContainerModule.js';
 
+export { type ApolloServerContainerModuleOptions } from './apollo/models/ApolloServerContainerModuleOptions.js';
 export { type InversifyApolloProvider } from './apollo/modules/InversifyApolloProvider.js';
