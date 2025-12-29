@@ -64,7 +64,7 @@ function loadBindings<TContext extends BaseContext>(
 }
 
 export default class ApolloFastifyServerContainerModule extends ApolloServerContainerModule {
-  public static graphFromOptions<TContext extends BaseContext>(
+  public static graphServerFromOptions<TContext extends BaseContext>(
     controllerOptions: ApolloFastifyControllerOptions<TContext>,
     serverOptions: ApolloServerInjectOptions<TContext>,
   ): ApolloFastifyServerContainerModule {
@@ -76,7 +76,7 @@ export default class ApolloFastifyServerContainerModule extends ApolloServerCont
     );
   }
 
-  public static subgraphFromOptions<TContext extends BaseContext>(
+  public static subgraphServerFromOptions<TContext extends BaseContext>(
     controllerOptions: ApolloFastifyControllerOptions<TContext>,
     serverOptions: ApolloServerInjectOptions<TContext>,
   ): ApolloFastifyServerContainerModule {

@@ -3,4 +3,4 @@
 "@inversifyjs/apollo-fastify": minor
 ---
 
-- Updated contianer module with graph and subgraph builders
+- Updated container module with graph and subgraph builders

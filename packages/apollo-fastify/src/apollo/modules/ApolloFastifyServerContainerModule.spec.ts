@@ -68,10 +68,11 @@ describe(ApolloFastifyServerContainerModule, () => {
           .mocked(buildApolloServerFastifyController)
           .mockReturnValueOnce(controllerClassMock);
 
-        containerModule = ApolloFastifyServerContainerModule.graphFromOptions(
-          controllerOptionsFixture,
-          serverOptionsFixture,
-        );
+        containerModule =
+          ApolloFastifyServerContainerModule.graphServerFromOptions(
+            controllerOptionsFixture,
+            serverOptionsFixture,
+          );
       });
 
       afterAll(() => {
@@ -243,7 +244,7 @@ describe(ApolloFastifyServerContainerModule, () => {
           .mockReturnValueOnce(controllerClassMock);
 
         containerModule =
-          ApolloFastifyServerContainerModule.subgraphFromOptions(
+          ApolloFastifyServerContainerModule.subgraphServerFromOptions(
             controllerOptionsFixture,
             serverOptionsFixture,
           );
