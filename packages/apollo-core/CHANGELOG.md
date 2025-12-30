@@ -1,5 +1,11 @@
 # @inversifyjs/apollo-core
 
+## 0.6.0
+
+### Minor Changes
+
+- Updated `ApolloServerContainerModule` with `ApolloServerContainerModuleOptions`
+
 ## 0.5.0
 
 ### Minor Changes
