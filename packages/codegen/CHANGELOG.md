@@ -1,5 +1,11 @@
 # @inversifyjs/graphql-codegen
 
+## 0.4.0
+
+### Minor Changes
+
+- Updated `generateTsModels` with different default options
+
 ## 0.3.0
 
 ### Minor Changes
