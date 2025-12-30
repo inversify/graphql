@@ -17,10 +17,10 @@ export default async function generateTsModels(
 
   const pluginConfig: TypeScriptPluginConfig & TypeScriptResolversPluginConfig =
     options.pluginConfig ?? {
-      avoidOptionals: true,
+      avoidOptionals: false,
       enumsAsTypes: true,
       resolverTypeWrapperSignature: 'Partial<T> | Promise<Partial<T>>',
-      useIndexSignature: true,
+      useIndexSignature: false,
     };
 
   /*
