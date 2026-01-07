@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "@inversifyjs/http-express": "4.9.1",
-    "@graphql-tools/utils": "10.11.0",
+    "@graphql-tools/utils": "11.0.0",
     "@types/express": "^5.0.6",
     "@types/node": "24.10.4",
     "@vitest/coverage-v8": "4.0.16",

@@ -11,7 +11,7 @@
   "devDependencies": {
     "@as-integrations/express5": "1.1.2",
     "@as-integrations/fastify": "3.1.0",
-    "@graphql-tools/utils": "10.11.0",
+    "@graphql-tools/utils": "11.0.0",
     "@inversifyjs/apollo-express": "workspace:*",
     "@inversifyjs/apollo-fastify": "workspace:*",
     "@inversifyjs/http-express": "4.9.1",
