@@ -9,7 +9,7 @@
     "@graphql-tools/schema": "^10.0.30"
   },
   "devDependencies": {
-    "@graphql-tools/utils": "10.11.0",
+    "@graphql-tools/utils": "11.0.0",
     "@types/node": "24.10.4",
     "@vitest/coverage-v8": "4.0.16",
     "eslint": "9.39.2",
