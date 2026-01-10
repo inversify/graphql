@@ -17,7 +17,7 @@
     "@inversifyjs/http-express": "4.9.1",
     "@inversifyjs/http-fastify": "4.9.1",
     "@types/express": "5.0.6",
-    "@types/node": "24.10.6",
+    "@types/node": "24.10.7",
     "@types/ws": "8.18.1",
     "@vitest/coverage-v8": "4.0.16",
     "eslint": "9.39.2",
