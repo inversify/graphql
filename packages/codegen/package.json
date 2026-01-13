@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@graphql-codegen/plugin-helpers": "6.1.0",
-    "@types/node": "24.10.7",
+    "@types/node": "24.10.8",
     "@vitest/coverage-v8": "4.0.17",
     "eslint": "9.39.2",
     "rimraf": "6.1.2",
