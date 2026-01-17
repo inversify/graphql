@@ -9,7 +9,7 @@
     "@inversifyjs/apollo-core": "workspace:*"
   },
   "devDependencies": {
-    "@inversifyjs/http-fastify": "4.9.1",
+    "@inversifyjs/http-fastify": "4.10.1",
     "@graphql-tools/utils": "11.0.0",
     "@types/node": "24.10.9",
     "@vitest/coverage-v8": "4.0.17",
@@ -42,7 +42,7 @@
   "name": "@inversifyjs/apollo-fastify",
   "peerDependencies": {
     "@apollo/server": "^5.2.0",
-    "@inversifyjs/http-core": "^4.9.1",
+    "@inversifyjs/http-core": "^4.10.1",
     "inversify": "^7.11.0"
   },
   "publishConfig": {
