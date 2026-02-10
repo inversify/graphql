@@ -8,12 +8,12 @@
     "@graphql-codegen/cli": "^6.1.1",
     "@graphql-codegen/typescript": "^5.0.7",
     "@graphql-codegen/typescript-resolvers": "^5.1.5",
-    "glob": "^13.0.1",
+    "glob": "^13.0.2",
     "prettier": "^3.8.1"
   },
   "devDependencies": {
     "@graphql-codegen/plugin-helpers": "6.1.0",
-    "@types/node": "24.10.12",
+    "@types/node": "24.10.13",
     "@vitest/coverage-v8": "4.0.18",
     "eslint": "9.39.2",
     "rimraf": "6.1.2",
