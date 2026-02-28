@@ -18,7 +18,7 @@
     "@inversifyjs/foundation-vitest-config": "0.1.1",
     "husky": "9.1.7",
     "knip": "5.85.0",
-    "lint-staged": "16.2.7",
+    "lint-staged": "16.3.0",
     "turbo": "2.8.12"
   },
   "homepage": "https://inversify.io/graphql/",
