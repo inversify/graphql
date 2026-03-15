@@ -1,5 +1,16 @@
 # @inversifyjs/apollo-express
 
+## 0.8.0
+
+### Minor Changes
+
+- Updated package to rely on inversify@8 ecosystem packages
+
+### Patch Changes
+
+- Updated dependencies
+  - @inversifyjs/apollo-core@0.7.0
+
 ## 0.7.0
 
 ### Minor Changes
