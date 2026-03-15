@@ -55,7 +55,7 @@ schema {
 
       const container: Container = new Container();
 
-      await container.load(containerModule);
+      await container.loadAsync(containerModule);
 
       const controller: Newable<ApolloServerController> =
         buildApolloServerExpressController({

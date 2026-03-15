@@ -78,7 +78,7 @@ type RootSubscription {
         .bind(resolverServiceIdentifier)
         .toConstantValue(graphqlResolver);
 
-      await container.load(containerModule, subscriptionContainerModule);
+      await container.loadAsync(containerModule, subscriptionContainerModule);
 
       const adapter: InversifyExpressHttpAdapter =
         new InversifyExpressHttpAdapter(container);
@@ -288,7 +288,7 @@ type RootSubscription {
         .bind(resolverServiceIdentifier)
         .toConstantValue(graphqlResolver);
 
-      await container.load(containerModule, subscriptionContainerModule);
+      await container.loadAsync(containerModule, subscriptionContainerModule);
 
       const adapter: InversifyFastifyHttpAdapter =
         new InversifyFastifyHttpAdapter(container);

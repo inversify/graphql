@@ -50,7 +50,7 @@ schema {
 
       const container: Container = new Container();
 
-      await container.load(containerModule);
+      await container.loadAsync(containerModule);
 
       container
         .bind(
