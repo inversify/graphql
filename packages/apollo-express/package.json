@@ -9,7 +9,7 @@
     "@inversifyjs/apollo-core": "workspace:*"
   },
   "devDependencies": {
-    "@inversifyjs/http-express": "4.10.2",
+    "@inversifyjs/http-express": "5.0.1",
     "@graphql-tools/utils": "11.0.0",
     "@types/express": "^5.0.6",
     "@types/node": "24.12.0",
