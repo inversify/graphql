@@ -1,4 +1,4 @@
-import { ServiceIdentifier } from 'inversify';
+import { type ServiceIdentifier } from 'inversify';
 
 import { type InversifyApolloProvider } from '../modules/InversifyApolloProvider.js';
 

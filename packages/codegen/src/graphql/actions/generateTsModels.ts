@@ -1,10 +1,10 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-import { CodegenConfig, executeCodegen } from '@graphql-codegen/cli';
+import { type CodegenConfig, executeCodegen } from '@graphql-codegen/cli';
 import { type Types } from '@graphql-codegen/plugin-helpers';
-import { TypeScriptPluginConfig } from '@graphql-codegen/typescript';
-import { TypeScriptResolversPluginConfig } from '@graphql-codegen/typescript-resolvers';
+import { type TypeScriptPluginConfig } from '@graphql-codegen/typescript';
+import { type TypeScriptResolversPluginConfig } from '@graphql-codegen/typescript-resolvers';
 
 import writeDefinitions from '../../io/actions/writeDefinitions.js';
 import readSchemas from '../../io/calculations/readSchemas.js';

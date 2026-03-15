@@ -8,8 +8,8 @@ import {
   vitest,
 } from 'vitest';
 
-vitest.mock('@apollo/server/plugin/drainHttpServer');
-vitest.mock('../controllers/buildApolloServerExpressController.js');
+vitest.mock(import('@apollo/server/plugin/drainHttpServer'));
+vitest.mock(import('../controllers/buildApolloServerExpressController.js'));
 
 import { type BaseContext } from '@apollo/server';
 import { type ExpressContextFunctionArgument } from '@as-integrations/express5';

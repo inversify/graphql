@@ -4,14 +4,17 @@ import {
   describe,
   expect,
   it,
-  Mock,
-  Mocked,
+  type Mock,
+  type Mocked,
   vitest,
 } from 'vitest';
 
-import { ContainerModule, ContainerModuleLoadOptions } from 'inversify';
+import {
+  type ContainerModule,
+  type ContainerModuleLoadOptions,
+} from 'inversify';
 
-import { ApolloServerContainerModuleOptions } from '../models/ApolloServerContainerModuleOptions.js';
+import { type ApolloServerContainerModuleOptions } from '../models/ApolloServerContainerModuleOptions.js';
 import { apolloServerGraphqlServiceIdentifier } from '../models/apolloServerGraphqlServiceIdentifier.js';
 import { apolloServerPluginsServiceIdentifier } from '../models/apolloServerPluginsServiceIdentifier.js';
 import { apolloServerResolversServiceIdentifier } from '../models/apolloServerResolversServiceIdentifier.js';

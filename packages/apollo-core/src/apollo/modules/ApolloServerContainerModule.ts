@@ -7,7 +7,7 @@ import { type GraphQLSchema } from 'graphql';
 import { ContainerModule, type ContainerModuleLoadOptions } from 'inversify';
 
 import { buildDocumentNodeFromTypeSource } from '../calcullations/buildDocumentNodeFromTypeSource.js';
-import { ApolloServerContainerModuleOptions } from '../models/ApolloServerContainerModuleOptions.js';
+import { type ApolloServerContainerModuleOptions } from '../models/ApolloServerContainerModuleOptions.js';
 import { apolloServerGraphqlServiceIdentifier } from '../models/apolloServerGraphqlServiceIdentifier.js';
 import { apolloServerPluginsServiceIdentifier } from '../models/apolloServerPluginsServiceIdentifier.js';
 import { apolloServerResolversServiceIdentifier } from '../models/apolloServerResolversServiceIdentifier.js';

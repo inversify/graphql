@@ -5,14 +5,18 @@ import {
   expect,
   it,
   type Mock,
-  Mocked,
+  type Mocked,
   vitest,
 } from 'vitest';
 
-vitest.mock('graphql-ws/use/ws');
-vitest.mock('ws', () => ({
-  WebSocketServer: class {},
-}));
+vitest.mock(import('graphql-ws/use/ws'));
+vitest.mock(
+  import('ws'),
+  () =>
+    ({
+      WebSocketServer: class {},
+    }) as Partial<typeof import('ws')>,
+);
 
 import type http from 'node:http';
 
