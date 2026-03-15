@@ -1,9 +1,9 @@
 import fs from 'node:fs/promises';
 
-import { Types } from '@graphql-codegen/plugin-helpers';
+import { type Types } from '@graphql-codegen/plugin-helpers';
 import prettier from 'prettier';
 
-import { WriteDefinitionsOptions } from '../models/WriteDefinitionsOptions.js';
+import { type WriteDefinitionsOptions } from '../models/WriteDefinitionsOptions.js';
 
 const DEFAULT_BANNER_CONTENT: string = `/* eslint-disable */
 /**

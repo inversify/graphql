@@ -15,8 +15,8 @@ import type express from 'express';
 import { type ContainerModuleLoadOptions } from 'inversify';
 
 import buildApolloServerExpressController from '../controllers/buildApolloServerExpressController.js';
-import { ApolloExpressControllerOptions } from '../models/ApolloExpressControllerOptions.js';
-import { ApolloServerInjectOptions } from '../models/ApolloServerInjectOptions.js';
+import { type ApolloExpressControllerOptions } from '../models/ApolloExpressControllerOptions.js';
+import { type ApolloServerInjectOptions } from '../models/ApolloServerInjectOptions.js';
 import { InversifyApolloProviderImplementation } from './InversifyApolloProviderImplementation.js';
 
 function loadBindings<TContext extends BaseContext>(

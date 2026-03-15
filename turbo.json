@@ -12,7 +12,7 @@
     },
     "lint": {
       "dependsOn": ["^build"],
-      "inputs": ["src/**/*.{cts,mts,ts,tsx}"]
+      "inputs": ["src/**/*.{cts,mts,ts}", "eslint.config.{cjs,mjs,js,json}"]
     },
     "test": {
       "dependsOn": ["^build"],

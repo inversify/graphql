@@ -1,7 +1,7 @@
 import { afterAll, beforeAll, describe, expect, it, vitest } from 'vitest';
 
-vitest.mock('glob');
-vitest.mock('./parseGraphqlFile.js');
+vitest.mock(import('glob'));
+vitest.mock(import('./parseGraphqlFile.js'));
 
 import { glob } from 'glob';
 

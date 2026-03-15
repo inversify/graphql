@@ -8,8 +8,8 @@ import {
   vitest,
 } from 'vitest';
 
-vitest.mock('@as-integrations/fastify');
-vitest.mock('../controllers/buildApolloServerFastifyController.js');
+vitest.mock(import('@as-integrations/fastify'));
+vitest.mock(import('../controllers/buildApolloServerFastifyController.js'));
 
 import { type BaseContext } from '@apollo/server';
 import { type ApolloFastifyContextFunctionArgument } from '@as-integrations/fastify';

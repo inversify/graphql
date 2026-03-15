@@ -1,4 +1,4 @@
-import { ApolloServer, type BaseContext } from '@apollo/server';
+import { type ApolloServer, type BaseContext } from '@apollo/server';
 import {
   type ExpressContextFunctionArgument,
   expressMiddleware,
@@ -15,9 +15,9 @@ import {
   Response,
 } from '@inversifyjs/http-core';
 import type express from 'express';
-import { inject, Newable } from 'inversify';
+import { inject, type Newable } from 'inversify';
 
-import { ApolloExpressControllerOptions } from '../models/ApolloExpressControllerOptions.js';
+import { type ApolloExpressControllerOptions } from '../models/ApolloExpressControllerOptions.js';
 
 export default function buildApolloServerExpressController<
   TContext extends BaseContext = BaseContext,

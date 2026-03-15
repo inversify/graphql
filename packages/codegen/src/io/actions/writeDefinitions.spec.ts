@@ -1,7 +1,7 @@
 import { afterAll, beforeAll, describe, expect, it, vitest } from 'vitest';
 
-vitest.mock('node:fs/promises');
-vitest.mock('prettier', () => ({
+vitest.mock(import('node:fs/promises'));
+vitest.mock(import('prettier'), () => ({
   default: {
     format: vitest.fn(),
   },
@@ -9,7 +9,7 @@ vitest.mock('prettier', () => ({
 
 import fs from 'node:fs/promises';
 
-import { Types } from '@graphql-codegen/plugin-helpers';
+import { type Types } from '@graphql-codegen/plugin-helpers';
 import prettier from 'prettier';
 
 import { type WriteDefinitionsOptions } from '../models/WriteDefinitionsOptions.js';

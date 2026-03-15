@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, describe, expect, it, vitest } from 'vitest';
 
-vitest.mock('node:fs/promises');
+vitest.mock(import('node:fs/promises'));
 
 import fs from 'node:fs/promises';
 
