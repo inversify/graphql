@@ -1,5 +1,16 @@
 # @inversifyjs/apollo-fastify
 
+## 0.4.0
+
+### Minor Changes
+
+- Updated package to rely on inversify@8 ecosystem packages
+
+### Patch Changes
+
+- Updated dependencies
+  - @inversifyjs/apollo-core@0.7.0
+
 ## 0.3.0
 
 ### Minor Changes

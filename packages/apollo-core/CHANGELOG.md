@@ -1,5 +1,11 @@
 # @inversifyjs/apollo-core
 
+## 0.7.0
+
+### Minor Changes
+
+- Updated package to rely on inversify@8 ecosystem packages
+
 ## 0.6.0
 
 ### Minor Changes
