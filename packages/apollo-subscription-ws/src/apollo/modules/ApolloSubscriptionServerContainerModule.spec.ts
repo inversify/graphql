@@ -5,7 +5,7 @@ import {
   expect,
   it,
   type Mock,
-  Mocked,
+  type Mocked,
   vitest,
 } from 'vitest';
 

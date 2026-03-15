@@ -1,11 +1,15 @@
 import { afterAll, beforeAll, describe, expect, it, vitest } from 'vitest';
 
 vitest.mock(import('node:fs/promises'));
-vitest.mock(import('prettier'), () => ({
-  default: {
-    format: vitest.fn(),
-  },
-}));
+vitest.mock(
+  import('prettier'),
+  () =>
+    ({
+      default: {
+        format: vitest.fn(),
+      },
+    }) as Partial<typeof import('prettier')>,
+);
 
 import fs from 'node:fs/promises';
 

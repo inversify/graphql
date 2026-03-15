@@ -2,7 +2,7 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
 import type http from 'node:http';
 
-import { BaseContext } from '@apollo/server';
+import { type BaseContext } from '@apollo/server';
 import { type ExpressContextFunctionArgument } from '@as-integrations/express5';
 import { type ApolloFastifyContextFunctionArgument } from '@as-integrations/fastify';
 import { type IResolvers, type TypeSource } from '@graphql-tools/utils';
@@ -12,8 +12,8 @@ import { ApolloFastifyServerContainerModule } from '@inversifyjs/apollo-fastify'
 import { InversifyExpressHttpAdapter } from '@inversifyjs/http-express';
 import { InversifyFastifyHttpAdapter } from '@inversifyjs/http-fastify';
 import { type FastifyInstance } from 'fastify';
-import { Container, ServiceIdentifier } from 'inversify';
-import { WebSocket, WebSocketServer } from 'ws';
+import { Container, type ServiceIdentifier } from 'inversify';
+import { WebSocket, type WebSocketServer } from 'ws';
 
 import { wsServerServiceIdentifier } from '../models/wsServerServiceIdentifier.js';
 import { ApolloSubscriptionServerContainerModule } from './ApolloSubscriptionServerContainerModule.js';

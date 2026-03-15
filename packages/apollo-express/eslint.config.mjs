@@ -8,7 +8,7 @@ export default [
       '@typescript-eslint/consistent-type-imports': [
         'error',
         {
-          disallowTypeAnnotations: true,
+          disallowTypeAnnotations: false,
           fixStyle: 'inline-type-imports',
           prefer: 'type-imports',
         },
