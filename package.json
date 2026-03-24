@@ -17,7 +17,7 @@
     "@inversifyjs/foundation-prettier-config": "0.1.1",
     "@inversifyjs/foundation-scripts": "workspace:*",
     "@inversifyjs/foundation-typescript-config": "0.1.1",
-    "@inversifyjs/foundation-vitest-config": "0.1.1",
+    "@inversifyjs/foundation-vitest-config": "0.2.0",
     "husky": "9.1.7",
     "knip": "6.0.4",
     "lint-staged": "16.4.0",
