@@ -12,7 +12,7 @@
     "@commitlint/prompt-cli": "20.5.0",
     "@eslint/js": "10.0.1",
     "@inversifyjs/eslint-plugin-require-extensions": "0.2.0",
-    "@inversifyjs/foundation-changelog-generator": "0.1.1",
+    "@inversifyjs/foundation-changelog-generator": "0.2.0",
     "@inversifyjs/foundation-eslint-config": "0.2.0",
     "@inversifyjs/foundation-prettier-config": "0.1.1",
     "@inversifyjs/foundation-scripts": "workspace:*",
