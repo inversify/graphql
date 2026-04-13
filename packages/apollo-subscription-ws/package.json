@@ -14,7 +14,7 @@
     "@graphql-tools/utils": "11.0.1",
     "@inversifyjs/apollo-express": "workspace:*",
     "@inversifyjs/apollo-fastify": "workspace:*",
-    "@inversifyjs/http-express": "5.2.0",
+    "@inversifyjs/http-express": "5.3.0",
     "@inversifyjs/http-fastify": "5.3.0",
     "@types/express": "5.0.6",
     "@types/node": "24.12.2",
