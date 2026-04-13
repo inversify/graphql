@@ -9,7 +9,7 @@
     "@inversifyjs/apollo-core": "workspace:*"
   },
   "devDependencies": {
-    "@inversifyjs/http-fastify": "5.2.0",
+    "@inversifyjs/http-fastify": "5.3.0",
     "@graphql-tools/utils": "11.0.1",
     "@types/node": "24.12.2",
     "@vitest/coverage-v8": "4.1.4",
