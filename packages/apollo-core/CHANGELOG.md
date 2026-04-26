@@ -1,5 +1,11 @@
 # @inversifyjs/apollo-core
 
+## 0.7.1
+
+### Patch Changes
+
+- Updated compiled files without `tslib` imports
+
 ## 0.7.0
 
 ### Minor Changes

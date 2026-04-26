@@ -1,5 +1,13 @@
 # @inversifyjs/apollo-subscription-ws
 
+## 0.3.1
+
+### Patch Changes
+
+- Updated compiled files without `tslib` imports
+- Updated dependencies
+  - @inversifyjs/apollo-core@0.7.1
+
 ## 0.3.0
 
 ### Minor Changes

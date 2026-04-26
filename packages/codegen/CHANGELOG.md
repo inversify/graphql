@@ -1,5 +1,11 @@
 # @inversifyjs/graphql-codegen
 
+## 0.4.1
+
+### Patch Changes
+
+- Updated compiled files without `tslib` imports
+
 ## 0.4.0
 
 ### Minor Changes
