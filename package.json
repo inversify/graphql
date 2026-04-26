@@ -16,7 +16,7 @@
     "@inversifyjs/foundation-eslint-config": "0.2.0",
     "@inversifyjs/foundation-prettier-config": "0.1.1",
     "@inversifyjs/foundation-scripts": "workspace:*",
-    "@inversifyjs/foundation-typescript-config": "0.1.1",
+    "@inversifyjs/foundation-typescript-config": "0.2.0",
     "@inversifyjs/foundation-vitest-config": "0.2.0",
     "husky": "9.1.7",
     "knip": "6.7.0",
