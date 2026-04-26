@@ -1,5 +1,13 @@
 # @inversifyjs/apollo-fastify
 
+## 0.4.1
+
+### Patch Changes
+
+- Updated compiled files without `tslib` imports
+- Updated dependencies
+  - @inversifyjs/apollo-core@0.7.1
+
 ## 0.4.0
 
 ### Minor Changes
