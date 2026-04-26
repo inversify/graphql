@@ -10,7 +10,7 @@ const defaultWorkspaceProjectConfig: WorkspaceProjectConfig & {
     "src/{index,cli,main}.{js,cjs,mjs,jsx,ts,cts,mts,tsx}",
     "**/?(*.)+(spec|spec-d).[jt]s?(x)",
   ],
-  ignoreDependencies: ["tslib"],
+  ignoreDependencies: [],
   project: ["**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}!", "!**/__mocks__"],
 };
 
