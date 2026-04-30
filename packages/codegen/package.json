@@ -5,14 +5,14 @@
   },
   "description": "InversifyJs GraphQL codegen package",
   "dependencies": {
-    "@graphql-codegen/cli": "^6.3.1",
-    "@graphql-codegen/typescript": "^5.0.10",
-    "@graphql-codegen/typescript-resolvers": "^5.1.8",
+    "@graphql-codegen/cli": "^7.0.0",
+    "@graphql-codegen/typescript": "^6.0.0",
+    "@graphql-codegen/typescript-resolvers": "^6.0.0",
     "glob": "^13.0.6",
     "prettier": "^3.8.3"
   },
   "devDependencies": {
-    "@graphql-codegen/plugin-helpers": "6.3.0",
+    "@graphql-codegen/plugin-helpers": "7.0.0",
     "@types/node": "24.12.2",
     "@vitest/coverage-v8": "4.1.5",
     "eslint": "10.2.1",
