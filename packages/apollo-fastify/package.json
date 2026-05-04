@@ -41,7 +41,7 @@
   "name": "@inversifyjs/apollo-fastify",
   "peerDependencies": {
     "@apollo/server": "^5.5.0",
-    "@inversifyjs/http-core": "^5.4.4",
+    "@inversifyjs/http-core": "^5.4.5",
     "inversify": "^8.1.0"
   },
   "publishConfig": {
