@@ -15,7 +15,7 @@
     "@inversifyjs/apollo-express": "workspace:*",
     "@inversifyjs/apollo-fastify": "workspace:*",
     "@inversifyjs/http-express": "5.4.4",
-    "@inversifyjs/http-fastify": "5.4.4",
+    "@inversifyjs/http-fastify": "5.4.5",
     "@types/express": "5.0.6",
     "@types/node": "24.12.2",
     "@types/ws": "8.18.1",
