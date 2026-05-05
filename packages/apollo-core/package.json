@@ -39,7 +39,7 @@
   },
   "name": "@inversifyjs/apollo-core",
   "peerDependencies": {
-    "@apollo/server": "^5.5.0",
+    "@apollo/server": "^5.5.1",
     "@apollo/subgraph": "^2.14.0",
     "inversify": "^8.1.0"
   },
