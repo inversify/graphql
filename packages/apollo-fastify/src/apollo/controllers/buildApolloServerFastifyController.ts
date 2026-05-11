@@ -52,7 +52,7 @@ export default function buildApolloServerFastifyController<
 
       this.#middleware = fastifyApolloHandler<TContext>(apolloServer, {
         context: this.#getContextFromSpreadArgs.bind(this),
-      }) as RouteHandlerMethod;
+      });
     }
 
     @Post()
