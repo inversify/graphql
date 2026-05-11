@@ -1,8 +1,12 @@
+allowBuilds:
+  '@apollo/protobufjs': true
+  '@swc/core': true
+  esbuild: true
+
+enablePrePostScripts: true
+strictPeerDependencies: false
+
 packages:
   - packages/*
   - packages/foundation/tools/*
 
-onlyBuiltDependencies:
-  - '@apollo/protobufjs'
-  - '@swc/core'
-  - esbuild

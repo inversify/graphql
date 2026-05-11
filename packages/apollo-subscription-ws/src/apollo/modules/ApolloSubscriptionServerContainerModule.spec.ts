@@ -214,8 +214,7 @@ describe(ApolloSubscriptionServerContainerModule, () => {
 
               const serverWillStartResult: unknown =
                 await plugin.serverWillStart({
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  apollo: {} as any,
+                  apollo: {},
                   // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   cache: {} as any,
                   // eslint-disable-next-line @typescript-eslint/no-explicit-any
