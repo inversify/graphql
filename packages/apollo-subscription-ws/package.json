@@ -50,7 +50,7 @@
   "peerDependencies": {
     "@apollo/server": "^5.5.1",
     "inversify": "^8.1.0",
-    "ws": "^8.20.0"
+    "ws": "^8.20.1"
   },
   "publishConfig": {
     "access": "public"

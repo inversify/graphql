@@ -7,9 +7,9 @@
   "description": "Inversify GraphQL monorepo root package",
   "devDependencies": {
     "@changesets/cli": "2.31.0",
-    "@commitlint/cli": "21.0.0",
-    "@commitlint/config-conventional": "21.0.0",
-    "@commitlint/prompt-cli": "21.0.0",
+    "@commitlint/cli": "21.0.1",
+    "@commitlint/config-conventional": "21.0.1",
+    "@commitlint/prompt-cli": "21.0.1",
     "@eslint/js": "10.0.1",
     "@inversifyjs/eslint-plugin-require-extensions": "0.2.0",
     "@inversifyjs/foundation-changelog-generator": "0.2.0",
@@ -19,13 +19,13 @@
     "@inversifyjs/foundation-typescript-config": "0.2.0",
     "@inversifyjs/foundation-vitest-config": "0.2.0",
     "husky": "9.1.7",
-    "knip": "6.12.2",
+    "knip": "6.13.1",
     "lint-staged": "17.0.4",
     "turbo": "2.9.12"
   },
   "homepage": "https://inversify.io/graphql/",
   "license": "MIT",
-  "packageManager": "pnpm@11.1.0",
+  "packageManager": "pnpm@11.1.1",
   "private": true,
   "repository": {
     "type": "git",
