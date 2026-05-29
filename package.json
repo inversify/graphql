@@ -7,9 +7,9 @@
   "description": "Inversify GraphQL monorepo root package",
   "devDependencies": {
     "@changesets/cli": "2.31.0",
-    "@commitlint/cli": "21.0.1",
-    "@commitlint/config-conventional": "21.0.1",
-    "@commitlint/prompt-cli": "21.0.1",
+    "@commitlint/cli": "21.0.2",
+    "@commitlint/config-conventional": "21.0.2",
+    "@commitlint/prompt-cli": "21.0.2",
     "@eslint/js": "10.0.1",
     "@inversifyjs/eslint-plugin-require-extensions": "0.2.0",
     "@inversifyjs/foundation-changelog-generator": "0.2.0",
