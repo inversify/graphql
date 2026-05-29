@@ -7,8 +7,8 @@
       "outputs": ["dist/**", "lib/**"]
     },
     "format": {
-      "inputs": ["src/**/*.{cts,mts,ts,tsx}"],
-      "outputs": ["src/**/*.{cts,mts,ts,tsx}"]
+      "inputs": ["src/**/*.{cts,mts,ts}", "prettier.config.{cjs,mjs,js,json}"],
+      "outputs": ["src/**/*.{cts,mts,ts}"]
     },
     "lint": {
       "dependsOn": ["^build"],
