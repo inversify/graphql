@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This is the InversifyJS monorepo - a TypeScript dependency injection library ecosystem. 
+This is the InversifyJS graphql monorepo. 
 
 ## Build and Test Commands
 
