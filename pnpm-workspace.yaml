@@ -4,9 +4,9 @@ allowBuilds:
   esbuild: true
 
 enablePrePostScripts: true
+minimumReleaseAge: 1440
 strictPeerDependencies: false
 
 packages:
   - packages/*
   - packages/foundation/tools/*
-
