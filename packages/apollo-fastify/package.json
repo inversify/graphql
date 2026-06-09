@@ -11,7 +11,7 @@
   "devDependencies": {
     "@inversifyjs/http-fastify": "5.4.5",
     "@graphql-tools/utils": "11.1.0",
-    "@types/node": "24.13.0",
+    "@types/node": "24.13.1",
     "@vitest/coverage-v8": "4.1.8",
     "eslint": "10.4.1",
     "fastify": "5.8.5",
