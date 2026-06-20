@@ -42,7 +42,7 @@
   "peerDependencies": {
     "@apollo/server": "^5.5.1",
     "@inversifyjs/http-core": "^5.4.5",
-    "inversify": "^8.1.0"
+    "inversify": "^8.1.1"
   },
   "publishConfig": {
     "access": "public"
