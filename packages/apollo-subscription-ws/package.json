@@ -11,7 +11,7 @@
   "devDependencies": {
     "@as-integrations/express5": "1.1.2",
     "@as-integrations/fastify": "3.1.0",
-    "@graphql-tools/utils": "11.1.0",
+    "@graphql-tools/utils": "11.1.1",
     "@inversifyjs/apollo-express": "workspace:*",
     "@inversifyjs/apollo-fastify": "workspace:*",
     "@inversifyjs/http-express": "5.4.5",
@@ -20,10 +20,10 @@
     "@types/node": "24.13.2",
     "@types/ws": "8.18.1",
     "@vitest/coverage-v8": "4.1.9",
-    "eslint": "10.5.0",
-    "fastify": "5.8.5",
+    "eslint": "10.6.0",
+    "fastify": "5.9.0",
     "graphql": "17.0.1",
-    "prettier": "3.8.4",
+    "prettier": "3.9.1",
     "rimraf": "6.1.3",
     "typescript": "6.0.3",
     "vitest": "4.1.9"
