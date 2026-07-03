@@ -9,7 +9,7 @@
     "@graphql-codegen/typescript": "^6.0.2",
     "@graphql-codegen/typescript-resolvers": "^6.0.2",
     "glob": "^13.0.6",
-    "prettier": "^3.9.1"
+    "prettier": "^3.9.4"
   },
   "devDependencies": {
     "@graphql-codegen/plugin-helpers": "7.0.1",
