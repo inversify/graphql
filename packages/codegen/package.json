@@ -9,11 +9,11 @@
     "@graphql-codegen/typescript": "^6.1.0",
     "@graphql-codegen/typescript-resolvers": "^6.1.0",
     "glob": "^13.0.6",
-    "prettier": "^3.9.4"
+    "prettier": "^3.9.5"
   },
   "devDependencies": {
     "@graphql-codegen/plugin-helpers": "7.1.0",
-    "@types/node": "24.13.2",
+    "@types/node": "24.13.3",
     "@vitest/coverage-v8": "4.1.10",
     "eslint": "10.6.0",
     "rimraf": "6.1.3",
