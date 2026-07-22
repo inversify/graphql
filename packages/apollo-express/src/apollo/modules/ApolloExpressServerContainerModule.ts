@@ -1,6 +1,6 @@
 import http from 'node:http';
 
-import { type BaseContext } from '@apollo/server';
+import { type ApolloServerPlugin, type BaseContext } from '@apollo/server';
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
 import {
   ApolloServerContainerModule,
@@ -41,7 +41,7 @@ function loadBindings<TContext extends BaseContext>(
     options
       .bind(apolloServerPluginsServiceIdentifier)
       .toResolvedValue(
-        (httpServer: http.Server) => [
+        (httpServer: http.Server): ApolloServerPlugin<TContext>[] => [
           ...(serverOptions.plugins ?? []),
           ApolloServerPluginDrainHttpServer({ httpServer }),
         ],
