@@ -10,10 +10,10 @@
   },
   "devDependencies": {
     "@inversifyjs/http-fastify": "5.4.5",
-    "@graphql-tools/utils": "11.2.0",
+    "@graphql-tools/utils": "11.2.2",
     "@types/node": "24.13.3",
     "@vitest/coverage-v8": "4.1.10",
-    "eslint": "10.6.0",
+    "eslint": "10.7.0",
     "fastify": "5.10.0",
     "prettier": "3.9.5",
     "rimraf": "6.1.3",
@@ -42,7 +42,7 @@
   "peerDependencies": {
     "@apollo/server": "^5.5.1",
     "@inversifyjs/http-core": "^5.4.5",
-    "inversify": "^8.1.2"
+    "inversify": "^8.2.1"
   },
   "publishConfig": {
     "access": "public"
