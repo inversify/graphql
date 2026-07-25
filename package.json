@@ -25,7 +25,7 @@
   },
   "homepage": "https://inversify.io/graphql/",
   "license": "MIT",
-  "packageManager": "pnpm@11.15.1",
+  "packageManager": "pnpm@11.16.0",
   "private": true,
   "repository": {
     "type": "git",
