@@ -49,7 +49,7 @@
   "name": "@inversifyjs/apollo-subscription-ws",
   "peerDependencies": {
     "@apollo/server": "^5.5.1",
-    "inversify": "^8.2.1",
+    "inversify": "^8.2.2",
     "ws": "^8.21.1"
   },
   "publishConfig": {
