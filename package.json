@@ -20,12 +20,12 @@
     "@inversifyjs/foundation-vitest-config": "0.2.0",
     "husky": "9.1.7",
     "knip": "6.29.0",
-    "lint-staged": "17.1.1",
+    "lint-staged": "17.2.0",
     "turbo": "2.10.6"
   },
   "homepage": "https://inversify.io/graphql/",
   "license": "MIT",
-  "packageManager": "pnpm@11.16.0",
+  "packageManager": "pnpm@11.17.0",
   "private": true,
   "repository": {
     "type": "git",
