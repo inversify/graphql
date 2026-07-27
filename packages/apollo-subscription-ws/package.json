@@ -6,7 +6,7 @@
   "description": "InversifyJs GraphQL Apollo subscriptions via ws package",
   "dependencies": {
     "@inversifyjs/apollo-core": "workspace:*",
-    "graphql-ws": "6.1.1"
+    "graphql-ws": "6.2.0"
   },
   "devDependencies": {
     "@as-integrations/express5": "1.1.2",
@@ -49,7 +49,7 @@
   "name": "@inversifyjs/apollo-subscription-ws",
   "peerDependencies": {
     "@apollo/server": "^5.5.1",
-    "inversify": "^8.2.2",
+    "inversify": "^8.2.3",
     "ws": "^8.21.1"
   },
   "publishConfig": {
