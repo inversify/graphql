@@ -41,7 +41,7 @@
   "peerDependencies": {
     "@apollo/server": "^5.5.1",
     "@apollo/subgraph": "^2.14.3",
-    "inversify": "^8.2.2"
+    "inversify": "^8.2.3"
   },
   "publishConfig": {
     "access": "public"
