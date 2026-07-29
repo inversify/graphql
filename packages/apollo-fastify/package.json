@@ -13,7 +13,7 @@
     "@graphql-tools/utils": "11.2.2",
     "@types/node": "24.13.3",
     "@vitest/coverage-v8": "4.1.10",
-    "eslint": "10.7.0",
+    "eslint": "10.8.0",
     "fastify": "5.10.0",
     "prettier": "3.9.6",
     "rimraf": "6.1.3",
