@@ -1,5 +1,11 @@
 # @inversifyjs/apollo-core
 
+## 0.7.2
+
+### Patch Changes
+
+- Updated `ApolloServerContainerModule` to honor new `buildSubgraphSchema` contract
+
 ## 0.7.1
 
 ### Patch Changes

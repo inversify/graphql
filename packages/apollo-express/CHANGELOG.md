@@ -1,5 +1,12 @@
 # @inversifyjs/apollo-express
 
+## 0.8.2
+
+### Patch Changes
+
+- Updated dependencies
+  - @inversifyjs/apollo-core@0.7.2
+
 ## 0.8.1
 
 ### Patch Changes
