@@ -1,6 +1,6 @@
 import { ApolloServer, type ApolloServerPlugin } from '@apollo/server';
 import { buildSubgraphSchema } from '@apollo/subgraph';
-import { type GraphQLResolverMap } from '@apollo/subgraph/dist/schema-helper/resolverMap.js';
+import { type GraphQLResolverMap } from '@apollo/subgraph';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import { type IResolvers, type TypeSource } from '@graphql-tools/utils';
 import { type GraphQLSchema } from 'graphql';
@@ -27,10 +27,12 @@ export class ApolloServerContainerModule extends ContainerModule {
           .bind(apolloServerGraphqlServiceIdentifier)
           .toResolvedValue(
             (resolvers: IResolvers, typeDefs: TypeSource): GraphQLSchema =>
-              buildSubgraphSchema({
-                resolvers: resolvers as GraphQLResolverMap<unknown>,
-                typeDefs: buildDocumentNodeFromTypeSource(typeDefs),
-              }),
+              buildSubgraphSchema([
+                {
+                  resolvers: resolvers as GraphQLResolverMap<unknown>,
+                  typeDefs: buildDocumentNodeFromTypeSource(typeDefs),
+                },
+              ]),
             [
               apolloServerResolversServiceIdentifier,
               apolloServerTypeDefsServiceIdentifier,
