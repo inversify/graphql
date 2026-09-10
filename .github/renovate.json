@@ -24,7 +24,7 @@
     }
   ],
   "constraints": {
-    "pnpm": "12.3.2"
+    "pnpm": "12.3.4"
   },
   "extends": [
     ":dependencyDashboard",
