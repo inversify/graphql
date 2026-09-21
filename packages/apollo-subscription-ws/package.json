@@ -6,7 +6,7 @@
   "description": "InversifyJs GraphQL Apollo subscriptions via ws package",
   "dependencies": {
     "@inversifyjs/apollo-core": "workspace:*",
-    "graphql-ws": "6.2.1"
+    "graphql-ws": "6.2.2"
   },
   "devDependencies": {
     "@as-integrations/express5": "1.1.2",
@@ -14,16 +14,16 @@
     "@graphql-tools/utils": "12.0.1",
     "@inversifyjs/apollo-express": "workspace:*",
     "@inversifyjs/apollo-fastify": "workspace:*",
-    "@inversifyjs/http-express": "5.6.0",
-    "@inversifyjs/http-fastify": "5.6.0",
+    "@inversifyjs/http-express": "5.6.1",
+    "@inversifyjs/http-fastify": "5.6.1",
     "@types/express": "5.0.6",
-    "@types/node": "24.13.3",
+    "@types/node": "24.13.5",
     "@types/ws": "8.18.1",
     "@vitest/coverage-v8": "4.1.11",
     "eslint": "10.10.0",
-    "fastify": "5.12.3",
+    "fastify": "5.12.5",
     "graphql": "17.0.2",
-    "prettier": "3.9.6",
+    "prettier": "3.9.8",
     "rimraf": "6.1.3",
     "typescript": "6.0.3",
     "vitest": "4.1.11"
