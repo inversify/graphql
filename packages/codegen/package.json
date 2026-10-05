@@ -12,8 +12,8 @@
     "prettier": "^3.9.9"
   },
   "devDependencies": {
-    "@graphql-codegen/plugin-helpers": "7.3.0",
-    "@types/node": "24.13.6",
+    "@graphql-codegen/plugin-helpers": "7.4.0",
+    "@types/node": "24.19.1",
     "@vitest/coverage-v8": "4.1.11",
     "eslint": "10.11.0",
     "rimraf": "6.1.3",
