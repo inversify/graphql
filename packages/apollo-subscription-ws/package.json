@@ -6,16 +6,16 @@
   "description": "InversifyJs GraphQL Apollo subscriptions via ws package",
   "dependencies": {
     "@inversifyjs/apollo-core": "workspace:*",
-    "graphql-ws": "6.4.1"
+    "graphql-ws": "6.4.2"
   },
   "devDependencies": {
     "@as-integrations/express5": "1.1.2",
     "@as-integrations/fastify": "3.1.0",
-    "@graphql-tools/utils": "13.2.1",
+    "@graphql-tools/utils": "13.2.2",
     "@inversifyjs/apollo-express": "workspace:*",
     "@inversifyjs/apollo-fastify": "workspace:*",
-    "@inversifyjs/http-express": "5.9.2",
-    "@inversifyjs/http-fastify": "5.9.2",
+    "@inversifyjs/http-express": "5.10.0",
+    "@inversifyjs/http-fastify": "5.10.0",
     "@types/express": "5.0.6",
     "@types/node": "26.6.6",
     "@types/ws": "8.18.2",
@@ -23,7 +23,7 @@
     "eslint": "10.14.0",
     "fastify": "5.12.8",
     "graphql": "17.1.0",
-    "prettier": "3.9.10",
+    "prettier": "3.10.1",
     "rimraf": "6.1.4",
     "typescript": "6.0.3",
     "vitest": "5.1.0"
@@ -48,9 +48,9 @@
   },
   "name": "@inversifyjs/apollo-subscription-ws",
   "peerDependencies": {
-    "@apollo/server": "^5.5.1",
-    "inversify": "^8.2.4",
-    "ws": "^8.22.1"
+    "@apollo/server": "^5.5.2",
+    "inversify": "^8.3.0",
+    "ws": "^8.23.0"
   },
   "publishConfig": {
     "access": "public"

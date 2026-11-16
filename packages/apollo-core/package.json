@@ -5,16 +5,16 @@
   },
   "description": "InversifyJs GraphQL Apollo core package",
   "dependencies": {
-    "@graphql-tools/merge": "10.0.8",
-    "@graphql-tools/schema": "^11.0.8"
+    "@graphql-tools/merge": "10.0.9",
+    "@graphql-tools/schema": "^11.0.9"
   },
   "devDependencies": {
-    "@graphql-tools/utils": "13.2.1",
+    "@graphql-tools/utils": "13.2.2",
     "@types/node": "26.6.6",
     "@vitest/coverage-v8": "5.1.0",
     "eslint": "10.14.0",
     "graphql": "17.1.0",
-    "prettier": "3.9.10",
+    "prettier": "3.10.1",
     "rimraf": "6.1.4",
     "typescript": "6.0.3",
     "vitest": "5.1.0"
@@ -39,9 +39,9 @@
   },
   "name": "@inversifyjs/apollo-core",
   "peerDependencies": {
-    "@apollo/server": "^5.5.1",
-    "@apollo/subgraph": "^2.15.1",
-    "inversify": "^8.2.4"
+    "@apollo/server": "^5.5.2",
+    "@apollo/subgraph": "^2.16.0",
+    "inversify": "^8.3.0"
   },
   "publishConfig": {
     "access": "public"
