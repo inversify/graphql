@@ -14,11 +14,11 @@
   "devDependencies": {
     "@graphql-codegen/plugin-helpers": "7.4.2",
     "@types/node": "26.6.6",
-    "@vitest/coverage-v8": "5.1.0",
-    "eslint": "10.14.0",
+    "@vitest/coverage-v8": "5.1.1",
+    "eslint": "10.15.0",
     "rimraf": "6.1.4",
     "typescript": "6.0.3",
-    "vitest": "5.1.0"
+    "vitest": "5.1.1"
   },
   "homepage": "https://inversify.io/framework/",
   "keywords": [

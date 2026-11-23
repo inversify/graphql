@@ -140,12 +140,13 @@ describe(ApolloSubscriptionServerContainerModule, () => {
         });
 
         describe('when wsServer resolver is called', () => {
-          let httpServerMock: http.Server;
+          let httpServerMock: Mocked<http.Server>;
 
           let resolverResult: WebSocketServer;
 
           beforeAll(() => {
-            httpServerMock = {} as http.Server;
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-class-instance-assignment
+            httpServerMock = {} as Mocked<http.Server>;
 
             resolverResult = wsServerResolverFunction(httpServerMock);
           });
@@ -160,14 +161,16 @@ describe(ApolloSubscriptionServerContainerModule, () => {
         });
 
         describe('when plugins resolver is called', () => {
-          let graphqlSchemaMock: GraphQLSchema;
-          let wsServerMock: WebSocketServer;
+          let graphqlSchemaMock: Mocked<GraphQLSchema>;
+          let wsServerMock: Mocked<WebSocketServer>;
           let serverCleanupMock: { dispose: Mock };
           let plugins: ApolloServerPlugin[];
 
           beforeAll(() => {
-            graphqlSchemaMock = {} as GraphQLSchema;
-            wsServerMock = {} as WebSocketServer;
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-class-instance-assignment
+            graphqlSchemaMock = {} as Mocked<GraphQLSchema>;
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-class-instance-assignment
+            wsServerMock = {} as Mocked<WebSocketServer>;
 
             serverCleanupMock = {
               dispose: vitest.fn(),
